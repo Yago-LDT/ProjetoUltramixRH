@@ -13,6 +13,13 @@
                 <img src="./../../img/Logotipo_moderno_minimalista_azul_marinho_para_ecommerce-removebg-preview.png" alt="logo" class="logo">
             </div>
             
+            <?php
+
+if (isset($_SESSION['mensagem'])) {
+  echo "<div class='error-message'>{$_SESSION['mensagem']}</div>";
+  unset($_SESSION['mensagem']);
+}
+?>
             
             <?php
     require './.././../../modelo/DAO/ClassUsuarioDAO.php';
@@ -55,7 +62,7 @@
 
 ?>
 <br><br>
-<button type="button" class="btn-submit" onclick="window.location.href='../../../menu.html'">Voltar</button>
+<button type="button" class="btn-submit" onclick="window.location.href='../../../menu.php'">Voltar</button>
             
             <div id="error-message" class="error-message"></div>
 

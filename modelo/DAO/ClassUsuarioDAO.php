@@ -23,6 +23,10 @@ class ClassUsuarioDAO
                    
 
                     if (password_verify($loginUsuario->getSenha(), $user['senha'])) {
+
+                        session_start();
+                        $_SESSION['usuario'] = $user['usuario']; 
+                        
                         return $user;   
                     } else {
                         return false;
@@ -50,7 +54,7 @@ class ClassUsuarioDAO
     public function listarlogins(){
         try {
             $pdo = Conexao::getInstance();
-            $sql = "SELECT * FROM login order by (usuario) desc";
+            $sql = "SELECT * FROM login order by (id) asc";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
             $logins = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -142,7 +146,7 @@ class ClassUsuarioDAO
     public function listarfuncionarios(){
         try {
             $pdo = Conexao::getInstance();
-            $sql = "SELECT * FROM funcionarios order by (nome) asc";
+            $sql = "SELECT * FROM funcionarios order by (id) asc";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
             $func = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -207,7 +211,7 @@ class ClassUsuarioDAO
     public function listarfornecedores(){
         try {
             $pdo = Conexao::getInstance();
-            $sql = "SELECT * FROM fornecedores order by (nome) asc";
+            $sql = "SELECT * FROM fornecedores order by (id) asc";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
             $func = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -266,7 +270,7 @@ class ClassUsuarioDAO
     public function listarcargos(){
         try {
             $pdo = Conexao::getInstance();
-            $sql = "SELECT * FROM cargos order by (titulo) asc";
+            $sql = "SELECT * FROM cargos order by (id) asc";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
             $func = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -583,7 +587,8 @@ class ClassUsuarioDAO
             $sql = "SELECT f.nome as Nome, c.titulo as Cargo, c.carga_horaria as CargaHoraria, c.faixa_salarial as FaixaSalarial,  f.CPF as CPF, f.email as Email, f.telefone as Telefone
         FROM funcionario_cargo 
         INNER JOIN funcionarios as f ON funcionario_cargo.funcionario_id = f.id
-        INNER JOIN cargos as c ON funcionario_cargo.cargo_titulo = c.titulo;";
+        INNER JOIN cargos as c ON funcionario_cargo.cargo_titulo = c.titulo
+        ORDER BY (f.id) asc;";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
             $listarfuncionariocargo = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -1,3 +1,12 @@
+<?php 
+session_start();
+
+if (!isset($_SESSION['usuario'])){
+header('Location: ../../../index.php');
+exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,6 +22,16 @@
       <div class="logo-container">
         <img src="./../../img/Logotipo_moderno_minimalista_azul_marinho_para_ecommerce-removebg-preview.png" alt="logo" class="logo">
       </div>
+      <h1>Alterar Fornecedor</h1>
+      <?php
+
+
+  if (isset($_SESSION['mensagem'])) {
+    echo "<div class='error-message'>{$_SESSION['mensagem']}</div>";
+    unset($_SESSION['mensagem']);
+  }
+?>
+<br>
       <form method="post" id="alterarfornecedor" action="./.././.././../controle/ControleUsuario.php?ACAO=alterarfornecedor">
 
       <div class="input-container">

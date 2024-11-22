@@ -14,6 +14,17 @@
       <div class="logo-container">
         <img src="visao/img/Logotipo_moderno_minimalista_azul_marinho_para_ecommerce-removebg-preview.png" class="logo">
       </div>
+      <h1>Login</h1>
+      <?php
+  session_start();
+
+  if (isset($_SESSION['mensagem'])) {
+    echo "<div class='error-message'>{$_SESSION['mensagem']}</div>";
+    unset($_SESSION['mensagem']);
+  }
+?>
+<br>
+
       <form method="post" id="loginForm" action="controle/ControleUsuario.php?ACAO=autenticarlogin">
         <div class="input-container">
           <label for="usuario">Usuário</label>
@@ -27,14 +38,7 @@
       </form>
       <div id="error-message" class="error-message"></div>
 
-      <?php
-  session_start();
 
-  if (isset($_SESSION['mensagem'])) {
-    echo "<div class='error-message'>{$_SESSION['mensagem']}</div>";
-    unset($_SESSION['mensagem']);
-  }
-?>
 
     </div>
   </div>

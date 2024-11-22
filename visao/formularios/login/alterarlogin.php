@@ -1,3 +1,12 @@
+<?php 
+session_start();
+
+if (!isset($_SESSION['usuario'])){
+header('Location: ../../../index.php');
+exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,6 +21,15 @@
             <div class="logo-container">
                 <img src="./../../img/Logotipo_moderno_minimalista_azul_marinho_para_ecommerce-removebg-preview.png" alt="logo" class="logo">
             </div>
+            <h1>Alterar Login</h1>
+            <?php
+
+  if (isset($_SESSION['mensagem'])) {
+    echo "<div class='error-message'>{$_SESSION['mensagem']}</div>";
+    unset($_SESSION['mensagem']);
+  }
+?>
+<br>
                 <form method="post" id="alterarlogin" action="./.././.././../controle/ControleUsuario.php?ACAO=alterarlogin">
                     <div class="input-container">
                     <label for="ID">ID para alterar</label>
@@ -30,17 +48,9 @@
                 
                 <button type="submit" class="btn-submit">Alterar</button>
                 <br><br>
-                <button type="button" class="btn-submit" onclick="window.location.href='../../../menu.html'">Voltar</button>
+      <button type="button" class="btn-submit" onclick="window.location.href='../../../menu.php'">Voltar</button>
             </form>
             <div id="error-message" class="error-message"></div>
-            <?php
-  session_start();
-
-  if (isset($_SESSION['mensagem'])) {
-    echo "<div class='error-message'>{$_SESSION['mensagem']}</div>";
-    unset($_SESSION['mensagem']);
-  }
-?>
             
         </div>
     </div>

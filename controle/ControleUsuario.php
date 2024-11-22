@@ -119,7 +119,7 @@ switch($acao) {
 
         if($resultado){
         $_SESSION['mensagem'] = "Login realizado com sucesso!";
-        header('Location: ../menu.html');
+        header('Location: ../menu.php');
         exit();
     
         } else{
@@ -136,8 +136,8 @@ switch($acao) {
         $resultado = $ClassUsuarioDAO->cadastrarlogin($processar);
 
         if($resultado >= 1) {
-            $_SESSION['mensagem'] = "Cadastro realizado com sucesso!";
-            header('Location: ../visao/formularios/login/cadastrarlogin.php');
+            $_SESSION['mensagem'] = "Cadastro realizado com sucesso! Faça o seu login!";
+            header('Location: ../index.php');
             exit();
         } else{
             $_SESSION['mensagem'] = "Erro ao realizar o cadastro!";
@@ -154,7 +154,7 @@ switch($acao) {
 
         if($resultado >= 1) {
             $_SESSION['mensagem'] = "Login alterado com sucesso!";
-            header('Location: ../visao/formularios/login/alterarlogin.php');
+            header('Location: ../visao/formularios/login/listarlogin.php');
             exit();
 
         } else{
@@ -171,7 +171,7 @@ switch($acao) {
 
         if($resultado >= 1) {
             $_SESSION['mensagem'] = "Login excluído com sucesso!";
-            header('Location: ../visao/formularios/login/excluirlogin.php');
+            header('Location: ../visao/formularios/login/listarlogin.php');
             exit();
 
         } else{
@@ -186,11 +186,11 @@ switch($acao) {
         $resultado = $ClassUsuarioDAO->cadastrarfuncionario($processar);
 
         if($resultado >= 1) {
-            $_SESSION['mensagem'] = "Cadastro realizado com sucesso!";
-            header('Location: ../visao/formularios/funcionarios/cadastrarfuncionario.php');
+            $_SESSION['mensagem'] = "Cadastro de funcionário realizado com sucesso!";
+            header('Location: ../visao/formularios/funcionarios/listarfuncionario.php');
             exit();
         } else{
-            $_SESSION['mensagem'] = "Erro ao realizar o cadastro!";
+            $_SESSION['mensagem'] = "Erro ao realizar o cadastro do funcionário!";
             header('Location: ../visao/formularios/funcionarios/cadastrarfuncionario.php');
 
         }
@@ -202,7 +202,7 @@ switch($acao) {
         
                 if($resultado >= 1) {
                     $_SESSION['mensagem'] = "Funcionário excluido com sucesso!";
-                    header('Location: ../visao/formularios/funcionarios/excluirfuncionario.php');
+                    header('Location: ../visao/formularios/funcionarios/listarfuncionario.php');
                     exit();
                 } else{
                     $_SESSION['mensagem'] = "Erro ao excluir funcionário!";
@@ -216,12 +216,12 @@ switch($acao) {
         $resultado = $ClassUsuarioDAO->alterarfuncionario($processar);
                 
                         if($resultado >= 1) {
-                            $_SESSION['mensagem'] = "Funcionario alterado com sucesso!";
-                            header('Location: ../visao/formularios/funcionarios/alterarfuncionario.php');
+                            $_SESSION['mensagem'] = "Funcionário alterado com sucesso!";
+                            header('Location: ../visao/formularios/funcionarios/listarfuncionario.php');
                             exit();
                 
                         } else{
-                            $_SESSION['mensagem'] = "Erro ao alterar o funcionario!";
+                            $_SESSION['mensagem'] = "Erro ao alterar o funcionário!";
                             header('Location: ../visao/formularios/funcionarios/alterarfuncionario.php');
                             exit();
                 
@@ -233,11 +233,11 @@ switch($acao) {
         $resultado = $ClassUsuarioDAO->cadastrarfornecedor($processar);
                         
                 if($resultado >= 1) {
-                $_SESSION['mensagem'] = "Cadastro realizado com sucesso!";
-                header('Location: ../visao/formularios/fornecedores/cadastrarfornecedor.php');
+                $_SESSION['mensagem'] = "Cadastro de fornecedor realizado com sucesso!";
+                header('Location: ../visao/formularios/fornecedores/listarfornecedor.php');
                 exit();
                     } else{
-                        $_SESSION['mensagem'] = "Erro ao realizar o cadastro!";
+                        $_SESSION['mensagem'] = "Erro ao realizar o cadastro do fornecedor!";
                         header('Location: ../visao/formularios/fornecedores/cadastrarfornecedor.php');
                         
                                 }
@@ -249,7 +249,7 @@ switch($acao) {
                                                         
             if($resultado >= 1) {
                 $_SESSION['mensagem'] = "Fornecedor excluido com sucesso!";
-                header('Location: ../visao/formularios/fornecedores/excluirfornecedor.php');
+                header('Location: ../visao/formularios/fornecedores/listarfornecedor.php');
                 exit();
                 } else{
                 $_SESSION['mensagem'] = "Erro ao excluir o fornecedor!";
@@ -264,7 +264,7 @@ switch($acao) {
             
                     if($resultado >= 1) {
                         $_SESSION['mensagem'] = "Fornecedor alterado com sucesso!";
-                        header('Location: ../visao/formularios/fornecedores/alterarfornecedor.php');
+                        header('Location: ../visao/formularios/fornecedores/listarfornecedor.php');
                         exit();
             
                     } else{
@@ -280,11 +280,11 @@ switch($acao) {
         $resultado = $ClassUsuarioDAO->cadastrarcargo($processar);
                     
             if($resultado >= 1) {
-            $_SESSION['mensagem'] = "Cadastro realizado com sucesso!";
-            header('Location: ../visao/formularios/cargos/cadastrarcargo.php');
+            $_SESSION['mensagem'] = "Cadastro de cargo realizado com sucesso!";
+            header('Location: ../visao/formularios/cargos/listarcargo.php');
             exit();
                 } else{
-                    $_SESSION['mensagem'] = "Erro ao realizar o cadastro!";
+                    $_SESSION['mensagem'] = "Erro ao realizar o cadastro do cargo!";
                     header('Location: ../visao/formularios/cargos/cadastrarcargo.php');
                     
                             }
@@ -296,7 +296,7 @@ switch($acao) {
 
         if($resultado >= 1) {
         $_SESSION['mensagem'] = "Cargo excluido com sucesso!";
-        header('Location: ../visao/formularios/cargos/excluircargo.php');
+        header('Location: ../visao/formularios/cargos/listarcargo.php');
         exit();
          } else{
         $_SESSION['mensagem'] = "Erro ao excluir cargo!";
@@ -311,7 +311,7 @@ switch($acao) {
         
                 if($resultado >= 1) {
                     $_SESSION['mensagem'] = "Cargo alterado com sucesso!";
-                    header('Location: ../visao/formularios/cargos/alterarcargo.php');
+                    header('Location: ../visao/formularios/cargos/listarcargo.php');
                     exit();
         
                 } else{
@@ -327,11 +327,11 @@ switch($acao) {
          $resultado = $ClassUsuarioDAO->cadastrarbancodehoras($processar);
                     
             if($resultado >= 1) {
-            $_SESSION['mensagem'] = "Cadastro realizado com sucesso!";
-            header('Location: ../visao/formularios/bancodehoras/cadastrarbancohoras.php');
+            $_SESSION['mensagem'] = "Cadastro de horas realizado com sucesso!";
+            header('Location: ../visao/formularios/bancodehoras/listarbancohoras.php');
             exit();
                 } else{
-                    $_SESSION['mensagem'] = "Erro ao realizar o cadastro!";
+                    $_SESSION['mensagem'] = "Erro ao realizar o cadastro de horas!";
                     header('Location: ../visao/formularios/bancodehoras/cadastrarbancohoras.php');
                     
                             }
@@ -342,11 +342,11 @@ switch($acao) {
         $resultado = $ClassUsuarioDAO->excluirbancodehoras($processar);
 
             if($resultado >= 1) {
-        $_SESSION['mensagem'] = "Excluido com sucesso!";
-        header('Location: ../visao/formularios/bancodehoras/excluirbancohoras.php');
+        $_SESSION['mensagem'] = "Banco de horas excluído com sucesso!";
+        header('Location: ../visao/formularios/bancodehoras/listarbancohoras.php');
         exit();
         } else{
-        $_SESSION['mensagem'] = "Erro ao excluir!";
+        $_SESSION['mensagem'] = "Erro ao excluir o banco de horas!";
         header('Location: ../visao/formularios/bancodehoras/excluirbancohoras.php');
 
      }
@@ -358,7 +358,7 @@ switch($acao) {
         
                 if($resultado >= 1) {
                     $_SESSION['mensagem'] = "Banco de horas alterado com sucesso!";
-                    header('Location: ../visao/formularios/bancodehoras/alterarbancohoras.php');
+                    header('Location: ../visao/formularios/bancodehoras/listarbancohoras.php');
                     exit();
         
                 } else{
@@ -375,11 +375,11 @@ switch($acao) {
         $resultado = $ClassUsuarioDAO->cadastraravaliacao($processar);
                     
             if($resultado >= 1) {
-            $_SESSION['mensagem'] = "Cadastro realizado com sucesso!";
-            header('Location: ../visao/formularios/avaliacao/cadastraravaliacao.php');
+            $_SESSION['mensagem'] = "Cadastro de avaliação realizado com sucesso!";
+            header('Location: ../visao/formularios/avaliacao/listaravaliacao.php');
             exit();
                 } else{
-                    $_SESSION['mensagem'] = "Erro ao realizar o cadastro!";
+                    $_SESSION['mensagem'] = "Erro ao realizar o cadastro de avaliação!";
                     header('Location: ../visao/formularios/avaliacao/cadastraravaliacao.php');
                     
                             }
@@ -391,11 +391,11 @@ switch($acao) {
      $resultado = $ClassUsuarioDAO->excluiravaliacao($processar);
 
             if($resultado >= 1) {
-        $_SESSION['mensagem'] = "Excluido com sucesso!";
-        header('Location: ../visao/formularios/avaliacao/excluiravaliacao.php');
+        $_SESSION['mensagem'] = "Avaliação excluída com sucesso!";
+        header('Location: ../visao/formularios/avaliacao/listaravaliacao.php');
         exit();
          } else{
-        $_SESSION['mensagem'] = "Erro ao excluir!";
+        $_SESSION['mensagem'] = "Erro ao excluir avaliação!";
         header('Location: ../visao/formularios/avaliacao/excluiravaliacao.php');
 
      }
@@ -407,7 +407,7 @@ switch($acao) {
         
                 if($resultado >= 1) {
                     $_SESSION['mensagem'] = "Avaliação alterada com sucesso!";
-                    header('Location: ../visao/formularios/avaliacao/alteraravaliacao.php');
+                    header('Location: ../visao/formularios/avaliacao/listaravaliacao.php');
                     exit();
         
                 } else{
@@ -423,11 +423,11 @@ switch($acao) {
      $resultado = $ClassUsuarioDAO->cadastrarcontrato($processar);
                     
             if($resultado >= 1) {
-            $_SESSION['mensagem'] = "Cadastro realizado com sucesso!";
-            header('Location: ../visao/formularios/contrato/cadastrarcontrato.php');
+            $_SESSION['mensagem'] = "Cadastro de contrato realizado com sucesso!";
+            header('Location: ../visao/formularios/contrato/listarcontrato.php');
             exit();
                 } else{
-                    $_SESSION['mensagem'] = "Erro ao realizar o cadastro!";
+                    $_SESSION['mensagem'] = "Erro ao realizar o cadastro do contrato!";
                     header('Location: ../visao/formularios/contrato/cadastrarcontrato.php');
                     
                             }
@@ -438,11 +438,11 @@ switch($acao) {
         $resultado = $ClassUsuarioDAO->excluircontrato($processar);
 
         if($resultado >= 1) {
-        $_SESSION['mensagem'] = "Excluido com sucesso!";
-        header('Location: ../visao/formularios/contrato/excluircontrato.php');
+        $_SESSION['mensagem'] = "Contrato excluido com sucesso!";
+        header('Location: ../visao/formularios/contrato/listarcontrato.php');
         exit();
          } else{
-        $_SESSION['mensagem'] = "Erro ao excluir!";
+        $_SESSION['mensagem'] = "Erro ao excluir contrato!";
         header('Location: ../visao/formularios/contrato/excluircontrato.php');
 
         }
@@ -454,11 +454,11 @@ switch($acao) {
         
                 if($resultado >= 1) {
                     $_SESSION['mensagem'] = "Contrato alterado com sucesso!";
-                    header('Location: ../visao/formularios/contrato/alterarcontrato.php');
+                    header('Location: ../visao/formularios/contrato/listarcontrato.php');
                     exit();
         
                 } else{
-                    $_SESSION['mensagem'] = "Erro ao alterar a avaliação!";
+                    $_SESSION['mensagem'] = "Erro ao alterar o contrato!";
                     header('Location: ../visao/formularios/contrato/alterarcontrato.php');
                     exit();
         
@@ -485,11 +485,11 @@ switch($acao) {
      $resultado = $ClassUsuarioDAO->excluirfolhapagamento($processar);
 
         if($resultado >= 1) {
-        $_SESSION['mensagem'] = "Excluido com sucesso!";
-        header('Location: ../visao/formularios/folhapagamento/excluirfolha.php');
+        $_SESSION['mensagem'] = "Folha de pagamento excluída com sucesso!";
+        header('Location: ../visao/formularios/folhapagamento/listarfolha.php');
         exit();
          } else{
-        $_SESSION['mensagem'] = "Erro ao excluir!";
+        $_SESSION['mensagem'] = "Erro ao excluir folha de pagamento!";
         header('Location: ../visao/formularios/folhapagamento/excluirfolha.php');
 
         }
@@ -501,11 +501,11 @@ switch($acao) {
                 
                         if($resultado >= 1) {
                             $_SESSION['mensagem'] = "Folha de pagamento alterada com sucesso!";
-                            header('Location: ../visao/formularios/folhapagamento/alterarfolha.php');
+                            header('Location: ../visao/formularios/folhapagamento/listarfolha.php');
                             exit();
                 
                         } else{
-                            $_SESSION['mensagem'] = "Erro ao alterar a folha!";
+                            $_SESSION['mensagem'] = "Erro ao alterar a folha de pagamento!";
                             header('Location: ../visao/formularios/folhapagamento/alterarfolha.php');
                             exit();
                 
@@ -517,11 +517,11 @@ switch($acao) {
         $resultado = $ClassUsuarioDAO->cadastrarfolhaponto($processar);
                     
             if($resultado >= 1) {
-            $_SESSION['mensagem'] = "Cadastro realizado com sucesso!";
-            header('Location: ../visao/formularios/folhaponto/cadastrarponto.php');
+            $_SESSION['mensagem'] = "Cadastro de ponto realizado com sucesso!";
+            header('Location: ../visao/formularios/folhaponto/listarponto.php');
             exit();
                 } else{
-                    $_SESSION['mensagem'] = "Erro ao realizar o cadastro!";
+                    $_SESSION['mensagem'] = "Erro ao realizar o cadastro de ponto!";
                     header('Location: ../visao/formularios/folhaponto/cadastrarponto.php');
                     
                             }
@@ -532,8 +532,8 @@ switch($acao) {
         $resultado = $ClassUsuarioDAO->excluirfolhaponto($processar);
 
          if($resultado >= 1) {
-        $_SESSION['mensagem'] = "Excluido com sucesso!";
-        header('Location: ../visao/formularios/folhaponto/excluirponto.php');
+        $_SESSION['mensagem'] = "Ponto excluido com sucesso!";
+        header('Location: ../visao/formularios/folhaponto/listarponto.php');
         exit();
         } else{
         $_SESSION['mensagem'] = "Erro ao excluir!";
@@ -547,12 +547,12 @@ switch($acao) {
         $resultado = $ClassUsuarioDAO->alterarfolhaponto($processar);
         
                 if($resultado >= 1) {
-                    $_SESSION['mensagem'] = "Folhaponto alterada com sucesso!";
-                    header('Location: ../visao/formularios/folhaponto/alterarponto.php');
+                    $_SESSION['mensagem'] = "Folha de ponto alterada com sucesso!";
+                    header('Location: ../visao/formularios/folhaponto/listarponto.php');
                     exit();
         
                 } else{
-                    $_SESSION['mensagem'] = "Erro ao alterar a folha!";
+                    $_SESSION['mensagem'] = "Erro ao alterar a folha de ponto!";
                     header('Location: ../visao/formularios/folhaponto/alterarponto.php');
                     exit();
         
