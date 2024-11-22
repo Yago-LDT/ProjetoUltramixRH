@@ -44,7 +44,6 @@ if (isset($_SESSION['mensagem'])) {
         }
     
         echo "<table>";
-        echo "<thead>";
         echo "<tr>";
         echo "<th>ID</th>";
         echo "<th>Nome</th>";
@@ -54,7 +53,7 @@ if (isset($_SESSION['mensagem'])) {
         echo "<th>Telefone</th>";
         echo "<th>Email</th>";
         echo "</tr>";
-        echo "</thead>";
+
         echo "<tbody>";
 
         foreach ($us as $us) {
