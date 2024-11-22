@@ -1,3 +1,12 @@
+<?php 
+session_start();
+
+if (!isset($_SESSION['usuario'])){
+header('Location:../../../index.php');
+exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,6 +21,14 @@
             <div class="logo-container">
                 <img src="./../../img/Logotipo_moderno_minimalista_azul_marinho_para_ecommerce-removebg-preview.png" alt="logo" class="logo">
             </div>
+            <h1>Listar Funcionário</h1>
+            <?php
+
+if (isset($_SESSION['mensagem'])) {
+  echo "<div class='error-message'>{$_SESSION['mensagem']}</div>";
+  unset($_SESSION['mensagem']);
+}
+?>
             
   
             <?php
@@ -19,9 +36,14 @@
 
         $classUsuarioDAO = new ClassUsuarioDAO();
         $us = $classUsuarioDAO->listarfuncionarios();
+
+        if (empty($us)){
+          $_SESSION['semresultados'] = 'Nenhum funcionário no sistema.';
+          echo "<div class='error-message'>{$_SESSION['semresultados']}</div>";
+          unset($_SESSION['semresultados']);
+        }
     
         echo "<table>";
-        echo "<thead>";
         echo "<tr>";
         echo "<th>ID</th>";
         echo "<th>Nome</th>";
@@ -31,7 +53,7 @@
         echo "<th>Telefone</th>";
         echo "<th>Email</th>";
         echo "</tr>";
-        echo "</thead>";
+
         echo "<tbody>";
 
         foreach ($us as $us) {
@@ -50,7 +72,7 @@
         echo "</table>";
       ?>
 <br><br>
-<button type="button" class="btn-submit" onclick="window.location.href='../../../menu.html'">Voltar</button>
+<button type="button" class="btn-submit" onclick="window.location.href='../../../menu.php'">Voltar</button>
             
             <div id="error-message" class="error-message"></div>
 

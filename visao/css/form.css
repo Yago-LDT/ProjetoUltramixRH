@@ -127,3 +127,8 @@ table tr:nth-child(even) {
 table tr:hover {
   background-color: #f1f1f1;
 }
+
+h1 {
+  color: #ffde59;
+  
+}

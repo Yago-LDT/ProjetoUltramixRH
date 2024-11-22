@@ -1,3 +1,12 @@
+<?php 
+session_start();
+
+if (!isset($_SESSION['usuario'])){
+header('Location: ../../../index.php');
+exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,8 +22,17 @@
       <div class="logo-container">
         <img src="./../../img/Logotipo_moderno_minimalista_azul_marinho_para_ecommerce-removebg-preview.png" alt="logo" class="logo">
       </div>
+      <h1>Alterar Cargo</h1>
+      <?php
+
+
+  if (isset($_SESSION['mensagem'])) {
+    echo "<div class='error-message'>{$_SESSION['mensagem']}</div>";
+    unset($_SESSION['mensagem']);
+  }
+?>
+<br>
       <form method="post" id="alteracaoCargoForm" action="./.././.././../controle/ControleUsuario.php?ACAO=alterarcargo">
-        <div class="input-container">
         <div class="input-container">
           <label for="novoid">ID</label>
           <input type="text" id="novoid" name="novoid" placeholder="Digite o ID do cargo para alterar" required>
@@ -40,14 +58,6 @@
       </form>
       <div id="error-message" class="error-message"></div>
 
-      <?php
-      session_start();
-
-      if (isset($_SESSION['mensagem'])) {
-        echo "<div class='error-message'>{$_SESSION['mensagem']}</div>";
-        unset($_SESSION['mensagem']);
-      }
-      ?>
     </div>
   </div>
 
