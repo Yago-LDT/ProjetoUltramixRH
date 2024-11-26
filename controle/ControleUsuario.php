@@ -43,7 +43,7 @@ $recomenda_promocao =@$_POST['recomendapromocao'];
 $duracao =@$_POST['duracao'];
 $fornecedor_id =@$_POST['fornecedorid'];
 $produto_quantidade =@$_POST['produtoquantidade'];
-$custos =@$_POST['custos'];
+$valor =@$_POST['custos'];
 //
 $cargo_id =@$_POST['cargoid'];
 $salario_bruto =@$_POST['salariobruto'];
@@ -97,7 +97,7 @@ $processar->setRecomendaPromocao($recomenda_promocao);
 $processar->setDuracao($duracao);
 $processar->setFornecedorId($fornecedor_id);
 $processar->setProdutoQuantidade($produto_quantidade);
-$processar->setCustos($custos);
+$processar->setValor($valor);
 //
 $processar->setCargoId($cargo_id);
 $processar->setSalarioBruto($salario_bruto);
@@ -200,7 +200,7 @@ switch($acao) {
     case "excluirfuncionario":
                 $resultado = $ClassUsuarioDAO->excluirfuncionario($processar);
         
-                if($resultado >= 1) {
+                if($resultado) {
                     $_SESSION['mensagem'] = "Funcionário excluido com sucesso!";
                     header('Location: ../visao/formularios/funcionarios/listarfuncionario.php');
                     exit();

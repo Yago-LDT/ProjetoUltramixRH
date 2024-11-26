@@ -50,7 +50,7 @@ if (isset($_SESSION['mensagem'])) {
       echo "<td><p>" . $us['titulo'] . "</p></td>";
       echo "<td><p>" . $us['carga_horaria'] . "</p></td>";
       echo "<td><p>" . $us['funcao'] . "</p></td>";
-      echo "<td><p>" . $us['faixa_salarial'] . "</p></td>";
+      echo "<td><p>" . $us['salario'] . "</p></td>";
       echo "</tr>"; 
       echo "</table>";
       echo "<div>";

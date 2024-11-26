@@ -119,7 +119,7 @@ class ClassUsuarioDAO
             $stmt->bindValue(':id', $excluirfuncionario->getExcluirid());
             $stmt->execute();
             return TRUE;
-        } catch (PDOException $exc) {
+        } catch (PDOException $ex) {
             echo $ex->getMessage();
         }
     }
@@ -224,12 +224,12 @@ class ClassUsuarioDAO
     public function cadastrarcargo(ClassUsuario $cadastrarcargo){
         try {
             $pdo = Conexao::getInstance();
-            $sql = "INSERT INTO cargos (titulo, carga_horaria, funcao, faixa_salarial) values (?,?,?,?)";
+            $sql = "INSERT INTO cargos (titulo, carga_horaria, funcao, salario) values (?,?,?,?)";
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(1, $cadastrarcargo->getTitulo());
             $stmt->bindValue(2, $cadastrarcargo->getCargaHoraria());
             $stmt->bindValue(3, $cadastrarcargo->getFuncao());
-            $stmt->bindValue(4, $cadastrarcargo->getFaixaSalarial());
+            $stmt->bindValue(4, $cadastrarcargo->getSalario());
             $stmt->execute();
             return TRUE;
         } catch (PDOException $exc) {
@@ -342,12 +342,12 @@ class ClassUsuarioDAO
     public function cadastrarcontrato(ClassUsuario $cadastrarcontratos){
         try {
             $pdo = Conexao::getInstance();
-            $sql = "INSERT INTO contratos (fornecedor_id, duracao, produto_quantidade, custos) values (?,?,?,?)";
+            $sql = "INSERT INTO contratos (fornecedor_id, duracao, produto_quantidade, valor) values (?,?,?,?)";
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(1, $cadastrarcontratos->getFornecedorId());
             $stmt->bindValue(2, $cadastrarcontratos->getDuracao());
             $stmt->bindValue(3, $cadastrarcontratos->getProdutoQuantidade());
-            $stmt->bindValue(4, $cadastrarcontratos->getCustos());
+            $stmt->bindValue(4, $cadastrarcontratos->getValor());
             $stmt->execute();
             return TRUE;
         } catch (PDOException $exc) {
@@ -371,12 +371,12 @@ class ClassUsuarioDAO
     public function alterarcontrato(ClassUsuario $alterarcontrato){
         try {
             $pdo = Conexao::getInstance();
-            $sql = "UPDATE contratos SET fornecedor_id=?, duracao=?, produto_quantidade=?, custos=? WHERE id=? ";
+            $sql = "UPDATE contratos SET fornecedor_id=?, duracao=?, produto_quantidade=?, valor=? WHERE id=? ";
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(1, $alterarcontrato->getFornecedorId());
             $stmt->bindValue(2, $alterarcontrato->getDuracao());
             $stmt->bindValue(3, $alterarcontrato->getProdutoQuantidade());
-            $stmt->bindValue(4, $alterarcontrato->getCustos());
+            $stmt->bindValue(4, $alterarcontrato->getValor());
             $stmt->bindValue(5, $alterarcontrato->getNovoid());
             $stmt->execute();
             return $stmt->rowCount();
@@ -401,14 +401,12 @@ class ClassUsuarioDAO
     public function cadastrarfolhapagamento(ClassUsuario $cadastrarfolhapagamento){
         try {
             $pdo = Conexao::getInstance();
-            $sql = "INSERT INTO folha_pagamento (funcionario_id, cargo_id, salario_bruto, beneficios, bonus, valor_receber) values (?,?,?,?,?,?)";
+            $sql = "INSERT INTO folha_pagamento (funcionario_id, cargo_id, beneficios, bonus) values (?,?,?,?)";
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(1, $cadastrarfolhapagamento->getFuncionarioId());
             $stmt->bindValue(2, $cadastrarfolhapagamento->getCargoId());
-            $stmt->bindValue(3, $cadastrarfolhapagamento->getSalarioBruto());
-            $stmt->bindValue(4, $cadastrarfolhapagamento->getBeneficios());
-            $stmt->bindValue(5, $cadastrarfolhapagamento->getBonus());
-            $stmt->bindValue(6, $cadastrarfolhapagamento->getValorReceber());
+            $stmt->bindValue(3, $cadastrarfolhapagamento->getBeneficios());
+            $stmt->bindValue(4, $cadastrarfolhapagamento->getBonus());
             $stmt->execute();
             return TRUE;
         } catch (PDOException $exc) {
@@ -432,15 +430,13 @@ class ClassUsuarioDAO
     public function alterarfolhapagamento(ClassUsuario $alterarfolhapagamento){
         try {
             $pdo = Conexao::getInstance();
-            $sql = "UPDATE folha_pagamento SET funcionario_id=?, cargo_id=?, salario_bruto=?, beneficios=?, bonus=?, valor_receber=? WHERE id=?";
+            $sql = "UPDATE folha_pagamento SET funcionario_id=?, cargo_id=?, beneficios=?, bonus=? WHERE id=?";
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(1, $alterarfolhapagamento->getFuncionarioId());
             $stmt->bindValue(2, $alterarfolhapagamento->getCargoId());
-            $stmt->bindValue(3, $alterarfolhapagamento->getSalarioBruto());
-            $stmt->bindValue(4, $alterarfolhapagamento->getBeneficios());
-            $stmt->bindValue(5, $alterarfolhapagamento->getBonus());
-            $stmt->bindValue(6, $alterarfolhapagamento->getValorReceber());
-            $stmt->bindValue(7, $alterarfolhapagamento->getNovoid());
+            $stmt->bindValue(3, $alterarfolhapagamento->getBeneficios());
+            $stmt->bindValue(4, $alterarfolhapagamento->getBonus());
+            $stmt->bindValue(5, $alterarfolhapagamento->getNovoid());
             $stmt->execute();
             return $stmt->rowCount();
         } catch (PDOException $ex) {
@@ -545,10 +541,11 @@ class ClassUsuarioDAO
             $stmt->bindValue(':id', $excluiravaliacao->getExcluirid());
             $stmt->execute();
             return TRUE;
-        } catch (PDOException $exc) {
+        } catch (PDOException $ex) {
             echo $ex->getMessage();
         }
     }
+
 
     public function alteraravaliacao(ClassUsuario $alteraravaliacao){
         try {
@@ -662,6 +659,52 @@ class ClassUsuarioDAO
             $stmt->execute();
             $contarfuncionarios = $stmt->fetch(PDO::FETCH_ASSOC);
             return $contarfuncionarios;
+        } catch (PDOException $exc) {
+            echo $exc->getMessage();
+        }
+
+    }
+
+    public function quantidadefornecedores() {
+        try {
+            $pdo = Conexao::getInstance();
+            $sql = "SELECT COUNT(*) AS total FROM fornecedores";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $contarfuncionarios = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $contarfuncionarios;
+        } catch (PDOException $exc) {
+            echo $exc->getMessage();
+        }
+
+    }
+
+    public function quantidadeadministradores() {
+        try {
+            $pdo = Conexao::getInstance();
+            $sql = "SELECT COUNT(*) AS total FROM login";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $contarfuncionarios = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $contarfuncionarios;
+        } catch (PDOException $exc) {
+            echo $exc->getMessage();
+        }
+
+    }
+    
+    public function melhoravaliacao() {
+        try {
+            $pdo = Conexao::getInstance();
+            $sql = "SELECT funcionario_id AS ID, f.nome AS Funcionario, (empenho + produtividade) / 2 AS Media
+FROM avaliacoes
+INNER JOIN funcionarios AS f ON funcionario_id = f.id
+ORDER BY Media DESC
+LIMIT 1";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $melhormedia = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $melhormedia;
         } catch (PDOException $exc) {
             echo $exc->getMessage();
         }

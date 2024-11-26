@@ -52,8 +52,8 @@ exit();
           <input type="number" id="produtoquantidade" name="produtoquantidade" placeholder="Digite a quantidade do produto" required min="0">
         </div>
         <div class="input-container">
-          <label for="custos">Custos</label>
-          <input type="number" id="custos" name="custos" placeholder="Digite o custo total" required min="0" step="0.01">
+          <label for="custos">Valor do Contrato</label>
+          <input type="number" id="custos" name="custos" placeholder="Digite o valor do contrato" required min="0" step="0.01">
         </div>
         
         <button type="submit" class="btn-submit">Alterar Contrato</button>

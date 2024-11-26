@@ -49,8 +49,8 @@ exit();
           <input type="text" id="funcao" name="funcao" placeholder="Descreva a função do cargo">
         </div>
         <div class="input-container">
-          <label for="faixasalarial">Faixa Salarial</label>
-          <input type="text" id="faixasalarial" name="faixasalarial" placeholder="Digite a faixa salarial" required>
+          <label for="salario">Salário</label>
+          <input type="number" id="salario" name="salario" placeholder="Digite a faixa salarial" required>
         </div>
         <button type="submit" class="btn-submit">Alterar Cargo</button>
         <br><br>
