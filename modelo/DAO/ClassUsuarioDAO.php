@@ -584,7 +584,7 @@ class ClassUsuarioDAO
     public function listarfuncionariocargo() {
         try {
             $pdo = Conexao::getInstance();
-            $sql = "SELECT f.nome as Nome, c.titulo as Cargo, c.carga_horaria as CargaHoraria, c.faixa_salarial as FaixaSalarial,  f.CPF as CPF, f.email as Email, f.telefone as Telefone
+            $sql = "SELECT f.id as ID, f.nome as Nome, c.titulo as Cargo, f.data_admissão as 'Data de Admissão', c.carga_horaria as CargaHoraria, c.faixa_salarial as FaixaSalarial,  f.CPF as CPF, f.email as Email, f.telefone as Telefone
         FROM funcionario_cargo 
         INNER JOIN funcionarios as f ON funcionario_cargo.funcionario_id = f.id
         INNER JOIN cargos as c ON funcionario_cargo.cargo_titulo = c.titulo
@@ -598,6 +598,74 @@ class ClassUsuarioDAO
         }
 
     }
+
+    public function listarfuncionariocargoportempo() {
+        try {
+            $pdo = Conexao::getInstance();
+            $sql = "SELECT f.id as ID, f.nome as Nome, c.titulo as Cargo, f.data_admissão as 'Data de Admissão', c.carga_horaria as CargaHoraria, c.faixa_salarial as FaixaSalarial,  f.CPF as CPF, f.email as Email, f.telefone as Telefone
+        FROM funcionario_cargo 
+        INNER JOIN funcionarios as f ON funcionario_cargo.funcionario_id = f.id
+        INNER JOIN cargos as c ON funcionario_cargo.cargo_titulo = c.titulo
+        ORDER BY (f.data_admissão) desc;";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $listarfuncionariocargoportempo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $listarfuncionariocargoportempo;
+        } catch (PDOException $exc) {
+            echo $exc->getMessage();
+        }
+
+    }
+
+    public function listarfuncionariocargoportempoantigo() {
+        try {
+            $pdo = Conexao::getInstance();
+            $sql = "SELECT f.id as ID, f.nome as Nome, c.titulo as Cargo, f.data_admissão as 'Data de Admissão', c.carga_horaria as CargaHoraria, c.faixa_salarial as FaixaSalarial,  f.CPF as CPF, f.email as Email, f.telefone as Telefone
+        FROM funcionario_cargo 
+        INNER JOIN funcionarios as f ON funcionario_cargo.funcionario_id = f.id
+        INNER JOIN cargos as c ON funcionario_cargo.cargo_titulo = c.titulo
+        ORDER BY (f.data_admissão) asc;";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $listarfuncionariocargoportempoantigo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $listarfuncionariocargoportempoantigo;
+        } catch (PDOException $exc) {
+            echo $exc->getMessage();
+        }
+
+    }
+
+    public function listarfuncionariocargoporcargo($cargo) {
+        try {
+            $pdo = Conexao::getInstance();
+            $sql = "SELECT f.id as ID, f.nome as Nome, c.titulo as Cargo, f.data_admissão as 'Data de Admissão', c.carga_horaria as CargaHoraria, c.faixa_salarial as FaixaSalarial,  f.CPF as CPF, f.email as Email, f.telefone as Telefone
+        FROM funcionario_cargo 
+        INNER JOIN funcionarios as f ON funcionario_cargo.funcionario_id = f.id
+        INNER JOIN cargos as c ON funcionario_cargo.cargo_titulo = c.titulo
+         WHERE c.titulo = ? ORDER BY (c.titulo) asc;";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(1, $cargo, PDO::PARAM_STR);
+            $stmt->execute();
+            $listarfuncionariocargoporcargo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $listarfuncionariocargoporcargo;
+        } catch (PDOException $exc) {
+            echo $exc->getMessage();
+        }
+
+    }
     
+    public function quantidadefuncionarios() {
+        try {
+            $pdo = Conexao::getInstance();
+            $sql = "SELECT COUNT(*) AS total FROM funcionarios";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $contarfuncionarios = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $contarfuncionarios;
+        } catch (PDOException $exc) {
+            echo $exc->getMessage();
+        }
+
+    }
 
     }

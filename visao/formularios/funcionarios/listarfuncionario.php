@@ -48,7 +48,6 @@ if (isset($_SESSION['mensagem'])) {
         echo "<th>ID</th>";
         echo "<th>Nome</th>";
         echo "<th>Cargo</th>";
-        echo "<th>Salário</th>";
         echo "<th>Data de Admissão</th>";
         echo "<th>Telefone</th>";
         echo "<th>Email</th>";
@@ -61,7 +60,6 @@ if (isset($_SESSION['mensagem'])) {
           echo "<td>" . $us['id'] . "</td>";
           echo "<td>" . $us['nome'] . "</td>";
           echo "<td>" . $us['cargo'] . "</td>";
-          echo "<td>" . $us['salario'] . "</td>";
           echo "<td>" . $us['data_admissão'] . "</td>";
           echo "<td>" . $us['telefone'] . "</td>";
           echo "<td>" . $us['email'] . "</td>";
