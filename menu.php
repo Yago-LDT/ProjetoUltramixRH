@@ -6,6 +6,10 @@ header('Location: index.php');
 exit();
 }
 
+require 'modelo/DAO/ClassUsuarioDAO.php';
+
+$classUsuarioDAO = new ClassUsuarioDAO();
+
 ?>
 
 <!DOCTYPE html>
@@ -149,12 +153,17 @@ exit();
         <main>
             <!-- Analyses -->
             <div class="new-users">
-                <h2>Novos usuários</h2>
+                <h2>Dados Gerais</h2>
                 <div class="user-list">
                     <div class="user">
-                        <img src="img/usuario-removebg-preview.png">
-                        <h2>Beatriz</h2>
+                        <p><strong>Funcionários no sistema</strong></p>
+                        <?php
                         
+                        $qtd = $classUsuarioDAO->quantidadefuncionarios();
+                        $quantidade = $qtd['total'];
+                         echo " <h2>" . $quantidade. "</h2>"; 
+                         
+                         ?>
                     </div>
                     <div class="user">
                         <img src="img/usuario-removebg-preview.png">
@@ -177,20 +186,115 @@ exit();
             </div>
 
             <div class="recent-orders">
-                <h2>Cadastros Recentes</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>ID Cadastro</th>
-                            <th>Status</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-                <a href="#">Mostrar Mais</a>
-            </div>
+    <h2>Funcionários e Cargos</h2>
+    
+    <h2>Filtrar:</h2>
+    <form method="GET" action="menu.php">
+        <label for="cargo"><strong>Por cargo: </strong></label>
+        <select name="cargo" id="cargo">
+            <option value="">Todos</option>
+            <option value="Operador de Caixa">Operador de Caixa</option>
+            <option value="Repositor">Repositor</option>
+            <option value="Empacotador">Empacotador</option>
+            <option value="Açougueiro">Açougueiro</option>
+            <option value="Estoquista">Estoquista</option>
+            <option value="Auxiliar Administrativo">Auxiliar Administrativo</option>
+        </select>
+        <input type="hidden" name="filtrar" value="cargo">
+        <button type="submit">Filtrar</button>
+    </form>
+    <br>
+    <form method="GET" action="menu.php">
+        <label for="tempo"><strong>Por tempo de empresa:</strong></label>
+        <select name="tempo" id="tempo">
+            <option value="">Não filtrar</option>
+            <option value="novos">Mais novos</option>
+            <option value="velhos">Mais velhos</option>
+        </select>
+        <input type="hidden" name="filtrar" value="tempo">
+        <button type="submit">Filtrar</button>
+    </form>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Cargo</th>
+                <th>Carga Horaria</th>
+                <th>Data de Admissão</th>
+                <th>Faixa Salarial</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if (isset($_GET['filtrar'])) {
+                $filtrar = $_GET['filtrar'];
+                if ($filtrar === 'cargo') {
+                    
+                    $cargo = $_GET['cargo'] ?? '';
+                    $resultados = $cargo ? $classUsuarioDAO->listarfuncionariocargoporcargo($cargo) : [];
+                    if (empty($resultados)) {
+                        echo "<tr><td colspan='6'>Nenhum funcionário encontrado para o cargo selecionado.</td></tr>";
+                    } else {
+                        foreach ($resultados as $funcionario) {
+                            echo "<tr>
+                                <td>" . htmlspecialchars($funcionario['ID']) . "</td>
+                                <td>" . htmlspecialchars($funcionario['Nome']) . "</td>
+                                <td>" . htmlspecialchars($funcionario['Cargo']) . "</td>
+                                <td>" . htmlspecialchars($funcionario['CargaHoraria']) . "</td>
+                                <td>" . htmlspecialchars($funcionario['Data de Admissão']) . "</td>
+                                <td>" . htmlspecialchars($funcionario['FaixaSalarial']) . "</td>
+                            </tr>";
+                        }
+                    }
+                } elseif ($filtrar === 'tempo') {
+               
+                    $tempo = $_GET['tempo'] ?? '';
+                    if ($tempo === 'novos') {
+                        $resultados = $classUsuarioDAO->listarfuncionariocargoportempo();
+                    } elseif ($tempo === 'velhos') {
+                        $resultados = $classUsuarioDAO->listarfuncionariocargoportempoantigo();
+                    } else {
+                        $resultados = [];
+                    }
+                    if (empty($resultados)) {
+                        echo "<tr><td colspan='6'>Nenhum funcionário encontrado com o filtro de tempo.</td></tr>";
+                    } else {
+                        foreach ($resultados as $funcionario) {
+                            echo "<tr>
+                                <td>" . htmlspecialchars($funcionario['ID']) . "</td>
+                                <td>" . htmlspecialchars($funcionario['Nome']) . "</td>
+                                <td>" . htmlspecialchars($funcionario['Cargo']) . "</td>
+                                <td>" . htmlspecialchars($funcionario['CargaHoraria']) . "</td>
+                                <td>" . htmlspecialchars($funcionario['Data de Admissão']) . "</td>
+                                <td>" . htmlspecialchars($funcionario['FaixaSalarial']) . "</td>
+                            </tr>";
+                        }
+                    }
+                }
+            } else {
+                
+                $resultados = $classUsuarioDAO->listarfuncionariocargo();
+                if (empty($resultados)) {
+                    echo "<tr><td colspan='6'>Nenhum funcionário cadastrado no sistema.</td></tr>";
+                } else {
+                    foreach ($resultados as $funcionario) {
+                        echo "<tr>
+                            <td>" . htmlspecialchars($funcionario['ID']) . "</td>
+                            <td>" . htmlspecialchars($funcionario['Nome']) . "</td>
+                            <td>" . htmlspecialchars($funcionario['Cargo']) . "</td>
+                            <td>" . htmlspecialchars($funcionario['CargaHoraria']) . "</td>
+                            <td>" . htmlspecialchars($funcionario['Data de Admissão']) . "</td>
+                            <td>" . htmlspecialchars($funcionario['FaixaSalarial']) . "</td>
+                        </tr>";
+                    }
+                }
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
 
         </main>
 
@@ -212,7 +316,7 @@ exit();
 
                 <div class="profile">
                     <div class="info">
-                        <p>Olá,<b>Administrador</b></p>
+                        <p>Olá,<b><?php echo " " . $_SESSION['usuario'] . ""; ?></b></p>
                         <small class="text-muted">Admin</small>
                     </div>
                     <div class="profile-photo">
@@ -275,7 +379,6 @@ exit();
 
     </div>
 
-    <script src="orders.js"></script>
     <script src="menu.js"></script>
 </body>
 

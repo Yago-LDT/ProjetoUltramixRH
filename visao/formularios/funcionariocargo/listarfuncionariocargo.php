@@ -30,13 +30,11 @@ if (isset($_SESSION['mensagem'])) {
 
       echo "<table>";
       echo "<tr>";
+      echo "<td><p>ID</p></td>";
       echo "<td><p>Nome</p></td>";
       echo "<td><p>Cargo</p></td>";
       echo "<td><p>CargaHoraria</p></td>";
       echo "<td><p>FaixaSalarial</p></td>";
-      echo "<td><p>CPF</p></td>";
-      echo "<td><p>Email</p></td>";
-      echo "<td><p>Telefone</p></td>";
       echo "</tr>"; 
       echo "</table>";
 
@@ -45,13 +43,12 @@ if (isset($_SESSION['mensagem'])) {
       echo "<div>";
     	echo "<table>";
       echo "<tr>";
+      echo "<td><p>" . $us['ID'] . "</p></td>";
       echo "<td><p>" . $us['Nome'] . "</p></td>";
       echo "<td><p>" . $us['Cargo'] . "</p></td>";
       echo "<td><p>" . $us['CargaHoraria'] . "</p></td>";
+      echo "<td><p>" . $us['Data de Admissão'] . "</p></td>";
       echo "<td><p>" . $us['FaixaSalarial'] . "</p></td>";
-      echo "<td><p>" . $us['CPF'] . "</p></td>";
-      echo "<td><p>" . $us['Email'] . "</p></td>";
-      echo "<td><p>" . $us['Telefone'] . "</p></td>";
       echo "</tr>"; 
       echo "</table>";
       echo "<div>";
