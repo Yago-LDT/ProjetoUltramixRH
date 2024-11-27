@@ -1,4 +1,3 @@
-
 const sideMenu = document.querySelector('aside');
 const menuBtn = document.getElementById('menu-btn');
 const closeBtn = document.getElementById('close-btn');
@@ -77,6 +76,8 @@ document.getElementById('funcionarios').addEventListener('click', function() {
     var submenu = document.getElementById('submenu-funcionarios');
     submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
 });
+
+
 
 
 
