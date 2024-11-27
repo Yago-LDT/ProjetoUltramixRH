@@ -41,7 +41,7 @@ if (isset($_SESSION['mensagem'])) {
           $_SESSION['semresultados'] = 'Nenhum funcionário no sistema.';
           echo "<div class='error-message'>{$_SESSION['semresultados']}</div>";
           unset($_SESSION['semresultados']);
-        }
+        }else{
     
         echo "<table>";
         echo "<tr>";
@@ -68,6 +68,7 @@ if (isset($_SESSION['mensagem'])) {
 
         echo "</tbody>";
         echo "</table>";
+        }
       ?>
 <br><br>
 <button type="button" class="btn-submit" onclick="window.location.href='../../../menu.php'">Voltar</button>

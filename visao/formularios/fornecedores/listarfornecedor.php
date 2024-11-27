@@ -42,11 +42,23 @@ exit();
     $_SESSION['semresultados'] = 'Nenhum fornecedor no sistema.';
     echo "<div class='error-message'>{$_SESSION['semresultados']}</div>";
     unset($_SESSION['semresultados']);
-  }
+  }else{
 
+  echo "<table>";
+        echo "<tr>";
+        echo "<th>ID</th>";
+        echo "<th>Nome</th>";
+        echo "<th>Produto</th>";
+        echo "<th>CNPJ</th>";
+        echo "<th>Telefone</th>";
+        echo "<th>Email</th>";
+        echo "<th>Última Remessa</th>";
+        echo "<th>Próxima Remessa</th>";
+        echo "</tr>";
+
+        echo "<tbody>";
     foreach ($us as $us) {
-      echo "<div>";
-    	echo "<table>";
+      
       echo "<tr>";
       echo "<td><p>" . $us['id'] . "</p></td>";
       echo "<td><p>" . $us['nome'] . "</p></td>";
@@ -56,10 +68,11 @@ exit();
       echo "<td><p>" . $us['email'] . "</p></td>";
       echo "<td><p>" . $us['ultima_remessa'] . "</p></td>";
       echo "<td><p>" . $us['proxima_remessa'] . "</p></td>";
-      echo "</tr>"; 
-      echo "</table>";
-      echo "<div>";
-
+      echo "</tr>";
+      
+          }
+          echo "</tbody>";
+          echo "</table>";
     }
 
 ?>
