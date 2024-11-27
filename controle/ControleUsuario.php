@@ -28,7 +28,7 @@ $proxima_remessa =@$_POST['proximaremessa'];
 $titulo =@$_POST['titulo'];
 $carga_horaria =@$_POST['cargahoraria'];
 $funcao =@$_POST['funcao'];
-$faixa_salarial =@$_POST['faixasalarial'];
+$salario =@$_POST['salario'];
 //
 $funcionario_id =@$_POST['funcionarioid'];
 $horas_em_banco =@$_POST['horasbanco'];
@@ -82,7 +82,7 @@ $processar->setProximaRemessa($proxima_remessa);
 $processar->setTitulo($titulo);
 $processar->setCargaHoraria($carga_horaria);
 $processar->setFuncao($funcao);
-$processar->setFaixaSalarial($faixa_salarial);
+$processar->setSalario($salario);
 //
 $processar->setFuncionarioId($funcionario_id);
 $processar->setHorasEmBanco($horas_em_banco);

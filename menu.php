@@ -395,6 +395,7 @@ $classUsuarioDAO = new ClassUsuarioDAO();
 
     </div>
 
+    <script src="orders.js"></script>
     <script src="menu.js"></script>
 </body>
 

@@ -217,25 +217,30 @@ aside .menu .message-count{
     font-size: 5px;
     border-radius: var(--border-radius-1);
 }
+    /* Submenu inicialmente oculto */
     .submenu {
-    position: absolute; 
-    z-index: 100; 
-    display: none;
-}
-.submenu.show {
-    display: block;  
-}
-
-.submenu a {
-    margin-bottom: 2px; 
-    background-color: #ffffff;
-    text-decoration: none;
-    color: #333;
-}
-
-.submenu a:hover {
-    background-color: #ddd;
-}
+        display: none; /* Esconde o submenu inicialmente */
+        position: relative;
+        margin-left: 20px; /* Distância dos itens do submenu */
+        background-color: #f9f9f9; /* Fundo dos submenus */
+        padding: 10px;
+        border-radius: 5px;
+    }
+    
+    .submenu a {
+        display: block;
+        padding: 5px 10px;
+        color: #333;
+        text-decoration: none;
+    }
+    
+    .submenu a:hover {
+        background-color: #ddd;
+    }
+    
+    .submenu.show {
+        display: block; /* Mostra o submenu quando a classe "show" é adicionada */
+    }
 
 
 
