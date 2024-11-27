@@ -5,6 +5,7 @@ USE `ultramixrh` ;
 
 create table if not exists login (id int not null auto_increment primary key, usuario varchar(50), senha varchar(255));
 
+select * from cargos;
 
 CREATE TABLE IF NOT EXISTS funcionarios (
 	id INT(11) NOT NULL AUTO_INCREMENT,
@@ -21,13 +22,12 @@ CREATE TABLE IF NOT EXISTS avaliacoes(
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `funcionario_id` INT(11) NOT NULL,
   `produtividade` VARCHAR(100),
-  `empenho` VARCHAR(100),
-  `relatorio` VARCHAR(500),
+  `empenho` INTEGER,
+  `relatorio` INTEGER,
   `recomenda_promoção` VARCHAR(20),
   PRIMARY KEY (`id`),
     FOREIGN KEY (`funcionario_id`)
     REFERENCES `ultramixrh`.`funcionarios` (`id`));
-
 
 CREATE TABLE IF NOT EXISTS `ultramixrh`.`banco_horas` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `ultramixrh`.`cargos` (
   `titulo` VARCHAR(40) UNIQUE,
   `carga_horaria` INT(11),
   `funcao` VARCHAR(300),
-  `faixa_salarial` VARCHAR(50),
+  `salario` DOUBLE,
   PRIMARY KEY (`id`));
 
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `ultramixrh`.`contratos` (
   `fornecedor_id` INT(11) NOT NULL,
   `duracao` VARCHAR(20),
   `produto_quantidade` VARCHAR(30),
-  `custos` VARCHAR(20),
+  `valor` VARCHAR(20),
   PRIMARY KEY (`id`),
     FOREIGN KEY (`fornecedor_id`)
     REFERENCES `ultramixrh`.`fornecedores` (`id`));
@@ -107,6 +107,8 @@ CREATE TABLE IF NOT EXISTS `ultramixrh`.`funcionario_cargo` (
     FOREIGN KEY (`cargo_titulo`)
     REFERENCES `ultramixrh`.`cargos` (`titulo`));
     
+    ---TRIGGERS---
+    
     DELIMITER //
     
     CREATE TRIGGER novo_funcionario_cargo
@@ -130,11 +132,36 @@ END //
 
 DELIMITER ;
 
+DELIMITER //
+CREATE TRIGGER trazer_salario
+BEFORE INSERT ON folha_pagamento
+FOR EACH ROW
+BEGIN
+DECLARE novosalario DECIMAL(10,2);
+SELECT salario
+INTO novosalario
+FROM cargos
+WHERE id = new.cargo_id;
 
+SET NEW.salario_bruto = novosalario;
+END//
+
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER calc_valor_receber
+BEFORE INSERT ON folha_pagamento
+FOR EACH ROW
+BEGIN
+DECLARE valortotal decimal (10,2);
+ SET valortotal = NEW.salario_bruto + NEW.beneficios + NEW.bonus;
+
+SET new.valor_receber = valortotal;
+ 
+END//
+
+DELIMITER ;
 -- INSERTS --
-
-select * from cargos;
-
 
 insert into cargos (titulo, carga_horaria, funcao, faixa_salarial) values ('Operador de Caixa', 8, 'Gere o caixa', '2.000 à 3.000');
 insert into cargos (titulo, carga_horaria, funcao, faixa_salarial) values ('Repositor', 8, 'Repõe as mercadorias', '2.000 à 3.000');

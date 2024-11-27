@@ -155,32 +155,37 @@ $classUsuarioDAO = new ClassUsuarioDAO();
             <div class="new-users">
                 <h2>Dados Gerais</h2>
                 <div class="user-list">
+                <div class="user">
+                        <p><strong>Administradores do sistema</strong></p>
+                        <?php
+                        
+                        $qtd = $classUsuarioDAO->quantidadeadministradores();
+                        $quantidade = $qtd['total'];
+                         echo " <h2>" . $quantidade. "</h2>"; 
+                         
+                         ?>
+                    </div>    
+
                     <div class="user">
                         <p><strong>Funcionários no sistema</strong></p>
                         <?php
                         
-                        $qtd = $classUsuarioDAO->quantidadefuncionarios();
-                        $quantidade = $qtd['total'];
+                        $qtd2 = $classUsuarioDAO->quantidadefuncionarios();
+                        $quantidade = $qtd2['total'];
                          echo " <h2>" . $quantidade. "</h2>"; 
                          
                          ?>
                     </div>
                     <div class="user">
-                        <img src="img/usuario-removebg-preview.png">
-                        <h2>Lucas</h2>
-                       
-                    </div>
-                    <div class="user">
-                        <img src="img/usuario-removebg-preview.png">
-                        <h2>Marcos</h2>
+                    <p><strong>Fornecedores no sistema</strong></p>
+                        <?php
                         
-                    </div>
-                    <div class="user">
-                        <a href="visao/formularios/login/cadastrarlogin.php" target="_blank">
-                        <img src="img/mais-removebg-preview.png">
-                        </a>
-                        <h2>Mais</h2>
-                        <p>Novo Cadastro</p>
+                        $qtd3 = $classUsuarioDAO->quantidadefornecedores();
+                        $quantidade = $qtd3['total'];
+                         echo " <h2>" . $quantidade. "</h2>"; 
+                         
+                         ?>
+                       
                     </div>
                 </div>
             </div>
@@ -328,7 +333,18 @@ $classUsuarioDAO = new ClassUsuarioDAO();
 
             <div class="user-profile">
                 <div class="logo">
-                    <h2>Dashboard De Gestão</h2>
+                    <h2>Funcionário melhor avaliado</h2>
+                    <br>
+                    <?php
+                        
+                        $melhor = $classUsuarioDAO->melhoravaliacao();
+                        
+                        if ($melhor) {
+                            echo "<h2>" . htmlspecialchars($melhor['Funcionario']) . "</h2>";
+                        } else {
+                            echo "<h2>Nenhuma avaliação encontrada.</h2>";
+                        }
+                         ?>
                 </div>
             </div>
 

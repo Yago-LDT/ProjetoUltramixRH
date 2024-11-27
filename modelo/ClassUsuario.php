@@ -13,7 +13,6 @@ class ClassUsuario
     //funcionarios//
     private $nome;
     private $cargo;
-    private $salario;
     private $CPF;
     private $data_admissão;
     private $telefone;
@@ -27,7 +26,7 @@ class ClassUsuario
     private $titulo;
     private $carga_horaria;
     private $funcao;
-    private $faixa_salarial;
+    private $salario;
     //banco_horas//
     private $funcionario_id;
     private $horas_em_banco;
@@ -42,7 +41,7 @@ class ClassUsuario
     private $duracao;
     private $fornecedor_id;
     private $produto_quantidade;
-    private $custos;
+    private $valor;
     //folha de pagamento//
     private $cargo_id;
     private $salario_bruto;
@@ -238,13 +237,6 @@ class ClassUsuario
         $this->funcao = $funcao;
     }
     
-    function getFaixaSalarial(){
-        return $this->faixa_salarial;
-    }
-
-    function setFaixaSalarial($faixa_salarial){
-        $this->faixa_salarial = $faixa_salarial;
-    }
 
     // functions banco_horas //
     function getFuncionarioId(){
@@ -337,12 +329,12 @@ class ClassUsuario
         $this->produto_quantidade = $produto_quantidade;
     }
 
-    function getCustos(){
-        return $this->custos;
+    function getValor(){
+        return $this->valor;
     }
 
-    function setCustos($custos){
-        $this->custos = $custos;
+    function setValor($valor){
+        $this->valor = $valor;
     }
 
 
