@@ -217,18 +217,21 @@ aside .menu .message-count{
     font-size: 5px;
     border-radius: var(--border-radius-1);
 }
-    /* Submenu inicialmente oculto */
+   
     .submenu {
-        display: none; /* Esconde o submenu inicialmente */
-        position: relative;
-        margin-left: 20px; /* Distância dos itens do submenu */
-        background-color: #f9f9f9; /* Fundo dos submenus */
+        display: none;
+         position: absolute; 
+         top: 0; 
+        margin-top: 0.5rem; 
+        margin-left: 10px; 
+        background-color: #f9f9f9; 
         padding: 10px;
         border-radius: 5px;
     }
     
     .submenu a {
-        display: block;
+
+   
         padding: 5px 10px;
         color: #333;
         text-decoration: none;
