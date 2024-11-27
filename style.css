@@ -220,12 +220,10 @@ aside .menu .message-count{
 
 .submenu {
     margin-left: 10px;
-    display: none; 
 }
 
 .submenu a {
     margin-bottom: 2px; 
-
     background-color: #ffffff;
     text-decoration: none;
     color: #333;
