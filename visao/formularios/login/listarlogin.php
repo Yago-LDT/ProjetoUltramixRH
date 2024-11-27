@@ -41,19 +41,28 @@ exit();
       $_SESSION['semresultados'] = 'Nenhum login no sistema.';
       echo "<div class='error-message'>{$_SESSION['semresultados']}</div>";
       unset($_SESSION['semresultados']);
-    }
+    }else{
+
+      echo "<table>";
+            echo "<tr>";
+            echo "<th>ID</th>";
+            echo "<th>Usuário</th>";
+            echo "</tr>";
+    
+            echo "<tbody>";
 
     foreach ($us as $us) {
-      echo "<div>";
-    	echo "<table>";
+      
       echo "<tr>";
       echo "<td><p>" . $us['id'] . "</p></td>";
       echo "<td><p>" . $us['usuario'] . "</p></td>";
       echo "</tr>"; 
-      echo "</table>";
-      echo "<div>";
+    
 
     }
+    echo "</tbody>";
+    echo "</table>";
+  }
 
 ?>
 <br><br>

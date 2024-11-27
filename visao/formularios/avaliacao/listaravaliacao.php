@@ -40,11 +40,22 @@ if (isset($_SESSION['mensagem'])) {
       $_SESSION['semresultados'] = 'Nenhuma avaliação no sistema.';
       echo "<div class='error-message'>{$_SESSION['semresultados']}</div>";
       unset($_SESSION['semresultados']);
-    }
+    }else{
+
+      echo "<table>";
+            echo "<tr>";
+            echo "<th>ID</th>";
+            echo "<th>Funcionário ID</th>";
+            echo "<th>Produtividade</th>";
+            echo "<th>Empenho</th>";
+            echo "<th>Relatório</th>";
+            echo "<th>Promoção</th>";
+            echo "</tr>";
+    
+            echo "<tbody>";
 
     foreach ($us as $us) {
-      echo "<div>";
-    	echo "<table>";
+     
       echo "<tr>";
       echo "<td><p>" . $us['id'] . "</p></td>";
       echo "<td><p>" . $us['funcionario_id'] . "</p></td>";
@@ -53,10 +64,13 @@ if (isset($_SESSION['mensagem'])) {
       echo "<td><p>" . $us['relatorio'] . "</p></td>";
       echo "<td><p>" . $us['recomenda_promoção'] . "</p></td>";
       echo "</tr>"; 
-      echo "</table>";
-      echo "<div>";
+    
+    
 
     }
+    echo "</tbody>";
+    echo "</table>";
+  }
 
 ?>
 <br><br>

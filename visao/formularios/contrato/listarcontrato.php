@@ -40,19 +40,33 @@ if (isset($_SESSION['mensagem'])) {
       $_SESSION['semresultados'] = 'Nenhum contrato no sistema.';
       echo "<div class='error-message'>{$_SESSION['semresultados']}</div>";
       unset($_SESSION['semresultados']);
-    }
+    }else{
 
-    foreach ($us as $us) {
-      echo "<div>";
-    	echo "<table>";
+      echo "<table>";
+            echo "<tr>";
+            echo "<th>ID</th>";
+            echo "<th>Fornecedor ID</th>";
+            echo "<th>Duracao</th>";
+            echo "<th>Quantidade de Produtos</th>";
+            echo "<th>Valor</th>";
+            echo "</tr>";
+    
+            echo "<tbody>";
+
+    foreach ($us as $us) { 
+      
       echo "<tr>";
       echo "<td><p>" . $us['id'] . "</p></td>";
-      echo "<td><p>" . $us['usuario'] . "</p></td>";
+      echo "<td><p>" . $us['fornecedor_id'] . "</p></td>";
+      echo "<td><p>" . $us['duracao'] . "</p></td>";
+      echo "<td><p>" . $us['produto_quantidade'] . "</p></td>";
+      echo "<td><p>" . $us['valor'] . "</p></td>";
       echo "</tr>"; 
-      echo "</table>";
-      echo "<div>";
-
+      
     }
+      echo "</tbody>";
+      echo "</table>";
+  }
 
 ?>
 <br><br>

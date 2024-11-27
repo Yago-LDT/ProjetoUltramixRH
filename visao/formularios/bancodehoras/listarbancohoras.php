@@ -40,23 +40,33 @@ if (isset($_SESSION['mensagem'])) {
       $_SESSION['semresultados'] = 'Sem banco de horas no sistema.';
       echo "<div class='error-message'>{$_SESSION['semresultados']}</div>";
       unset($_SESSION['semresultados']);
-    }
+    }else{
+
+      echo "<table>";
+            echo "<tr>";
+            echo "<th>ID</th>";
+            echo "<th>Funcionário ID</th>";
+            echo "<th>Horas em Banco</th>";
+            echo "<th>Férias</th>";
+            echo "<th>Licenças</th>";
+            echo "</tr>";
+    
+            echo "<tbody>";
 
     foreach ($us as $us) {
-      echo "<div>";
-    	echo "<table>";
+    
       echo "<tr>";
       echo "<td><p>" . $us['id'] . "</p></td>";
       echo "<td><p>" . $us['funcionario_id'] . "</p></td>";
       echo "<td><p>" . $us['horas_em_banco'] . "</p></td>";
       echo "<td><p>" . $us['ferias'] . "</p></td>";
       echo "<td><p>" . $us['licencas'] . "</p></td>";
-      
       echo "</tr>"; 
-      echo "</table>";
-      echo "<div>";
-
+    
     }
+    echo "</tbody>";
+    echo "</table>";
+  }
 
 ?>
 <br><br>

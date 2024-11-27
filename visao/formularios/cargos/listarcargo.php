@@ -40,22 +40,33 @@ if (isset($_SESSION['mensagem'])) {
       $_SESSION['semresultados'] = 'Nenhum cargo no sistema.';
       echo "<div class='error-message'>{$_SESSION['semresultados']}</div>";
       unset($_SESSION['semresultados']);
-    }
+    }else{
+
+      echo "<table>";
+            echo "<tr>";
+            echo "<th>ID</th>";
+            echo "<th>Cargo</th>";
+            echo "<th>Carga Horaria</th>";
+            echo "<th>Função</th>";
+            echo "<th>Salário</th>";
+            echo "</tr>";
+    
+            echo "<tbody>";
 
     foreach ($us as $us) {
-      echo "<div>";
-    	echo "<table>";
+      
       echo "<tr>";
       echo "<td><p>" . $us['id'] . "</p></td>";
       echo "<td><p>" . $us['titulo'] . "</p></td>";
       echo "<td><p>" . $us['carga_horaria'] . "</p></td>";
       echo "<td><p>" . $us['funcao'] . "</p></td>";
-      echo "<td><p>" . $us['salario'] . "</p></td>";
+      echo "<td><p>" . $us['faixa_salarial'] . "</p></td>";
       echo "</tr>"; 
-      echo "</table>";
-      echo "<div>";
-
+    
     }
+      echo "</tbody>";
+      echo "</table>";
+  }
 
 ?>
 <br><br>
