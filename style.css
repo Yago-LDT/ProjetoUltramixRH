@@ -210,10 +210,6 @@ aside .menu a:hover{
     color: var(--color-primary);
 }
 
-aside .menu a:hover span{
-    margin-left: 0.6rem;
-}
-
 aside .menu .message-count{
     background-color: var(--color-danger);
     padding: 2px 6px;
