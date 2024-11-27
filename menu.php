@@ -228,7 +228,7 @@ $classUsuarioDAO = new ClassUsuarioDAO();
                 <th>Cargo</th>
                 <th>Carga Horaria</th>
                 <th>Data de Admissão</th>
-                <th>Faixa Salarial</th>
+                <th>Salário</th>
             </tr>
         </thead>
         <tbody>
@@ -395,6 +395,7 @@ $classUsuarioDAO = new ClassUsuarioDAO();
 
     </div>
 
+    <script src="orders.js"></script>
     <script src="menu.js"></script>
 </body>
 

@@ -18,23 +18,9 @@ darkMode.addEventListener('click', () => {
     darkMode.querySelector('span:nth-child(2)').classList.toggle('active');
 })
 
-
-Orders.forEach(order => {
-    const tr = document.createElement('tr');
-    const trContent = `
-        <td>${order.productName}</td>
-        <td>${order.productNumber}</td>
-        <td>${order.paymentStatus}</td>
-        <td class="${order.status === 'Declined' ? 'danger' : order.status === 'Pending' ? 'warning' : 'primary'}">${order.status}</td>
-        <td class="primary">Details</td>
-    `;
-    tr.innerHTML = trContent;
-    document.querySelector('table tbody').appendChild(tr);
-});
-
 document.getElementById('contratos').addEventListener('click', function() {
     var submenu = document.getElementById('submenu-contratos');
-    submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
+    submenu.classList.toggle('show');
 });
 
 document.getElementById('login').addEventListener('click', function() {

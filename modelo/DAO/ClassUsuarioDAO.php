@@ -581,7 +581,7 @@ class ClassUsuarioDAO
     public function listarfuncionariocargo() {
         try {
             $pdo = Conexao::getInstance();
-            $sql = "SELECT f.id as ID, f.nome as Nome, c.titulo as Cargo, f.data_admissão as 'Data de Admissão', c.carga_horaria as CargaHoraria, c.faixa_salarial as FaixaSalarial,  f.CPF as CPF, f.email as Email, f.telefone as Telefone
+            $sql = "SELECT f.id as ID, f.nome as Nome, c.titulo as Cargo, f.data_admissão as 'Data de Admissão', c.carga_horaria as CargaHoraria, c.salario as FaixaSalarial,  f.CPF as CPF, f.email as Email, f.telefone as Telefone
         FROM funcionario_cargo 
         INNER JOIN funcionarios as f ON funcionario_cargo.funcionario_id = f.id
         INNER JOIN cargos as c ON funcionario_cargo.cargo_titulo = c.titulo
@@ -599,7 +599,7 @@ class ClassUsuarioDAO
     public function listarfuncionariocargoportempo() {
         try {
             $pdo = Conexao::getInstance();
-            $sql = "SELECT f.id as ID, f.nome as Nome, c.titulo as Cargo, f.data_admissão as 'Data de Admissão', c.carga_horaria as CargaHoraria, c.faixa_salarial as FaixaSalarial,  f.CPF as CPF, f.email as Email, f.telefone as Telefone
+            $sql = "SELECT f.id as ID, f.nome as Nome, c.titulo as Cargo, f.data_admissão as 'Data de Admissão', c.carga_horaria as CargaHoraria, c.salario as FaixaSalarial,  f.CPF as CPF, f.email as Email, f.telefone as Telefone
         FROM funcionario_cargo 
         INNER JOIN funcionarios as f ON funcionario_cargo.funcionario_id = f.id
         INNER JOIN cargos as c ON funcionario_cargo.cargo_titulo = c.titulo
@@ -617,7 +617,7 @@ class ClassUsuarioDAO
     public function listarfuncionariocargoportempoantigo() {
         try {
             $pdo = Conexao::getInstance();
-            $sql = "SELECT f.id as ID, f.nome as Nome, c.titulo as Cargo, f.data_admissão as 'Data de Admissão', c.carga_horaria as CargaHoraria, c.faixa_salarial as FaixaSalarial,  f.CPF as CPF, f.email as Email, f.telefone as Telefone
+            $sql = "SELECT f.id as ID, f.nome as Nome, c.titulo as Cargo, f.data_admissão as 'Data de Admissão', c.carga_horaria as CargaHoraria, c.salario as FaixaSalarial,  f.CPF as CPF, f.email as Email, f.telefone as Telefone
         FROM funcionario_cargo 
         INNER JOIN funcionarios as f ON funcionario_cargo.funcionario_id = f.id
         INNER JOIN cargos as c ON funcionario_cargo.cargo_titulo = c.titulo
@@ -635,7 +635,7 @@ class ClassUsuarioDAO
     public function listarfuncionariocargoporcargo($cargo) {
         try {
             $pdo = Conexao::getInstance();
-            $sql = "SELECT f.id as ID, f.nome as Nome, c.titulo as Cargo, f.data_admissão as 'Data de Admissão', c.carga_horaria as CargaHoraria, c.faixa_salarial as FaixaSalarial,  f.CPF as CPF, f.email as Email, f.telefone as Telefone
+            $sql = "SELECT f.id as ID, f.nome as Nome, c.titulo as Cargo, f.data_admissão as 'Data de Admissão', c.carga_horaria as CargaHoraria, c.salario as FaixaSalarial,  f.CPF as CPF, f.email as Email, f.telefone as Telefone
         FROM funcionario_cargo 
         INNER JOIN funcionarios as f ON funcionario_cargo.funcionario_id = f.id
         INNER JOIN cargos as c ON funcionario_cargo.cargo_titulo = c.titulo
@@ -697,10 +697,10 @@ class ClassUsuarioDAO
         try {
             $pdo = Conexao::getInstance();
             $sql = "SELECT funcionario_id AS ID, f.nome AS Funcionario, (empenho + produtividade) / 2 AS Media
-FROM avaliacoes
-INNER JOIN funcionarios AS f ON funcionario_id = f.id
-ORDER BY Media DESC
-LIMIT 1";
+            FROM avaliacoes
+            INNER JOIN funcionarios AS f ON funcionario_id = f.id
+                ORDER BY Media DESC
+                LIMIT 1";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
             $melhormedia = $stmt->fetch(PDO::FETCH_ASSOC);

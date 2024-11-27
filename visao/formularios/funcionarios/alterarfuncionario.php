@@ -52,10 +52,6 @@ exit();
           <input type="text" id="cargo" name="cargo" placeholder="Digite o cargo" required>
         </div>
         <div class="input-container">
-          <label for="salario">Salário</label>
-          <input type="number" id="salario" name="salario" placeholder="Digite o salário" required min="0" step="0.01" title="Insira um valor numérico para o salário">
-        </div>
-        <div class="input-container">
           <label for="data_admissao">Data de Admissão</label>
           <input type="date" id="data_admissao" name="data_admissao" required>
         </div>
