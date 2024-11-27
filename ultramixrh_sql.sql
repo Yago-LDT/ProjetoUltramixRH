@@ -5,8 +5,6 @@ USE `ultramixrh` ;
 
 create table if not exists login (id int not null auto_increment primary key, usuario varchar(50), senha varchar(255));
 
-select * from cargos;
-
 CREATE TABLE IF NOT EXISTS funcionarios (
 	id INT(11) NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(50),
