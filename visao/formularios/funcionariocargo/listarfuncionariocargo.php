@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Funcionário e Cargo UltramixRH</title>
   <link rel="stylesheet" href="./../../css/form.css">
+  <link rel="stylesheet" href="./../../css/listagem.css"> <!-- Adicionado o novo CSS -->
 </head>
 <body>
     <div class="login-container">
@@ -34,7 +35,8 @@ if (isset($_SESSION['mensagem'])) {
       echo "<td><p>Nome</p></td>";
       echo "<td><p>Cargo</p></td>";
       echo "<td><p>CargaHoraria</p></td>";
-      echo "<td><p>FaixaSalarial</p></td>";
+      echo "<td><p>Data Admissão</p></td>";
+      echo "<th>Faixa Salarial</th>";
       echo "</tr>"; 
       echo "</table>";
 
@@ -54,6 +56,9 @@ if (isset($_SESSION['mensagem'])) {
       echo "<div>";
 
     }
+
+    echo "</tbody>";
+        echo "</table>";
 
 
 

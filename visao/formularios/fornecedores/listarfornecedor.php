@@ -14,6 +14,7 @@ exit();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fornecedor UltraMix RH</title>
   <link rel="stylesheet" href="./../../css/form.css">
+  <link rel="stylesheet" href="./../../css/listagem.css"> <!-- Adicionado o novo CSS -->
 </head>
 <body>
     <div class="login-container">
@@ -44,6 +45,20 @@ exit();
     unset($_SESSION['semresultados']);
   }
 
+  echo "<table>";
+        echo "<tr>";
+        echo "<th>ID</th>";
+        echo "<th>Nome</th>";
+        echo "<th>Produto</th>";
+        echo "<th>CNPJ</th>";
+        echo "<th>Telefone</th>";
+        echo "<th>Email</th>";
+        echo "<th>Última remessa</th>";
+        echo "<th>Próxima Remessa</th>";
+        echo "</tr>";
+
+        echo "<tbody>";
+
     foreach ($us as $us) {
       echo "<div>";
     	echo "<table>";
@@ -61,6 +76,9 @@ exit();
       echo "<div>";
 
     }
+
+    echo "</tbody>";
+        echo "</table>";
 
 ?>
 <br><br>

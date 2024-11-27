@@ -14,6 +14,7 @@ exit();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Banco de Horas UltraMix RH</title>
   <link rel="stylesheet" href="./../../css/form.css">
+  <link rel="stylesheet" href="./../../css/listagem.css"> <!-- Adicionado o novo CSS -->
 </head>
 <body>
     <div class="login-container">
@@ -42,6 +43,18 @@ if (isset($_SESSION['mensagem'])) {
       unset($_SESSION['semresultados']);
     }
 
+        echo "<table>";
+        echo "<tr>";
+        echo "<th>ID</th>";
+        echo "<th>Funcionário ID</th>";
+        echo "<th>Horas em banco</th>";
+        echo "<th>Férias</th>";
+        echo "<th>Licença</th>";
+        echo "<th>Email</th>";
+        echo "</tr>";
+
+        echo "<tbody>";
+
     foreach ($us as $us) {
       echo "<div>";
     	echo "<table>";
@@ -57,6 +70,9 @@ if (isset($_SESSION['mensagem'])) {
       echo "<div>";
 
     }
+
+    echo "</tbody>";
+    echo "</table>";
 
 ?>
 <br><br>

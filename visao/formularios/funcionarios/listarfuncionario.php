@@ -14,6 +14,7 @@ exit();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Funcionário UltraMix RH</title>
   <link rel="stylesheet" href="./../../css/form.css">
+  <link rel="stylesheet" href="./../../css/listagem.css"> <!-- Adicionado o novo CSS -->
 </head>
 <body>
     <div class="login-container">
