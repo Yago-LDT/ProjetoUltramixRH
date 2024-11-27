@@ -240,11 +240,6 @@ aside .menu .message-count{
     .submenu a:hover {
         background-color: #ddd;
     }
-    
-    .submenu.show {
-        display: block; /* Mostra o submenu quando a classe "show" é adicionada */
-    }
-
 
 
 main{

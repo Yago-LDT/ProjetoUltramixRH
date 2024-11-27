@@ -21,7 +21,7 @@ darkMode.addEventListener('click', () => {
 
 document.getElementById('contratos').addEventListener('click', function() {
     var submenu = document.getElementById('submenu-contratos');
-    submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
+    submenu.classList.toggle('show');
 });
 
 document.getElementById('login').addEventListener('click', function() {
