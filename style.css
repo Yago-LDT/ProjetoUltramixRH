@@ -220,6 +220,11 @@ aside .menu .message-count{
 
 .submenu {
     margin-left: 10px;
+    display: none; 
+}
+
+.submenu.show {
+    display: block;  
 }
 
 .submenu a {
