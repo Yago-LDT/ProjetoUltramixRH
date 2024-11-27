@@ -217,12 +217,11 @@ aside .menu .message-count{
     font-size: 5px;
     border-radius: var(--border-radius-1);
 }
-
-.submenu {
-    margin-left: 10px;
-    display: none; 
+    .submenu {
+    position: absolute; 
+    z-index: 100; 
+    display: none;
 }
-
 .submenu.show {
     display: block;  
 }
