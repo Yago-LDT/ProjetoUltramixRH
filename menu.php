@@ -220,7 +220,7 @@ $classUsuarioDAO = new ClassUsuarioDAO();
         <button type="submit">Filtrar</button>
     </form>
     <br>
-    <table class="rolagem">
+    <table>
         <thead>
             <tr>
                 <th>ID</th>
