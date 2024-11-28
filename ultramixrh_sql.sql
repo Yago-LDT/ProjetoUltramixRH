@@ -108,20 +108,18 @@ CREATE TABLE IF NOT EXISTS `ultramixrh`.`funcionario_cargo` (
     
     ---TRIGGERS---
     
-    DELIMITER //
+DELIMITER //
+CREATE TRIGGER novo_funcionario_cargo
+AFTER INSERT ON funcionarios
+FOR EACH ROW 
+BEGIN
+INSERT INTO funcionario_cargo (funcionario_id, cargo_titulo)
+VALUES (new.id, new.cargo);
+END;
+//
+DELIMITER ;
     
-    CREATE TRIGGER novo_funcionario_cargo
-    AFTER INSERT ON funcionarios
-    FOR EACH ROW 
-    BEGIN
-    INSERT INTO funcionario_cargo (funcionario_id, cargo_titulo)
-    VALUES (new.id, new.cargo);
-    END;
-    //
-    
-    DELIMITER ;
-    
-    DELIMITER //
+DELIMITER //
 create trigger deletar_funcionario_cargo
 before delete on funcionarios
 for each row 
@@ -130,6 +128,67 @@ DELETE FROM funcionario_cargo WHERE funcionario_id = old.id;
 END //
 
 DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER delete_folha_pagamento_on_cargo_delete
+BEFORE DELETE ON cargos
+FOR EACH ROW
+BEGIN
+  DELETE FROM folha_pagamento WHERE cargo_id = OLD.id;
+END;
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER delete_folha_pagamento_on_funcionario_delete
+BEFORE DELETE ON funcionarios
+FOR EACH ROW
+BEGIN
+  DELETE FROM folha_pagamento WHERE funcionario_id = OLD.id;
+END;
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER delete_avaliacoes_on_funcionario_delete
+BEFORE DELETE ON funcionarios
+FOR EACH ROW
+BEGIN
+  DELETE FROM avaliacoes WHERE funcionario_id = OLD.id;
+END;
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER delete_banco_horas_on_funcionario_delete
+BEFORE DELETE ON funcionarios
+FOR EACH ROW
+BEGIN
+  DELETE FROM banco_horas WHERE funcionario_id = OLD.id;
+END;
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER delete_contratos_on_fornecedor_delete
+BEFORE DELETE ON fornecedores
+FOR EACH ROW
+BEGIN
+  DELETE FROM contratos WHERE fornecedor_id = OLD.id;
+END;
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER delete_folha_ponto_on_funcionario_delete
+BEFORE DELETE ON funcionarios
+FOR EACH ROW
+BEGIN
+  DELETE FROM folha_ponto WHERE funcionario_id = OLD.id;
+END;
+//
+DELIMITER ;
+
 
 DELIMITER //
 CREATE TRIGGER trazer_salario
@@ -160,9 +219,7 @@ WHERE id = new.cargo_id;
 
 SET NEW.cargo = novocargo;
 END//
-
 DELIMITER ;
-
 
 DELIMITER //
 CREATE TRIGGER calc_valor_receber
@@ -175,7 +232,6 @@ DECLARE valortotal decimal (10,2);
 SET new.valor_receber = valortotal;
  
 END//
-
 DELIMITER ;
 
 insert into cargos (titulo, carga_horaria, funcao, salario) values ('Operador de Caixa', 8, 'Gere o caixa', 2.000);
@@ -209,11 +265,11 @@ insert into avaliacoes (funcionario_id, produtividade, empenho, relatorio, recom
 insert into avaliacoes (funcionario_id, produtividade, empenho, relatorio, recomenda_promoção) values ( 7, 7, 6, 'Bom, mas ainda novo', 'Não');
 insert into avaliacoes (funcionario_id, produtividade, empenho, relatorio, recomenda_promoção) values ( 8, 7, 8, 'Experiente, dedicado e já se mostrou capaz de gerir', 'Sim');
 
-insert into contratos (fornecedor_id, duracao, produto_quantidade, valor) values ( 1, '1 ano', '600 mensais', 'R$45.000');
-insert into contratos (fornecedor_id, duracao, produto_quantidade, valor) values ( 2, '3 anos', '800 mensais', 'R$55.000');
-insert into contratos (fornecedor_id, duracao, produto_quantidade, valor) values ( 3, '2 anos', '350 mensais', 'R$20.000');
-insert into contratos (fornecedor_id, duracao, produto_quantidade, valor) values ( 4, '2 anos', '165 mensais', 'R$20.000');
-insert into contratos (fornecedor_id, duracao, produto_quantidade, valor) values ( 5, '1 ano', '80 mensais', 'R$19.000');
+insert into contratos (fornecedor_id, duracao, produto_quantidade, valor) values ( 1, '1 ano', '600 mensais', '45.000');
+insert into contratos (fornecedor_id, duracao, produto_quantidade, valor) values ( 2, '3 anos', '800 mensais', '55.000');
+insert into contratos (fornecedor_id, duracao, produto_quantidade, valor) values ( 3, '2 anos', '350 mensais', '20.000');
+insert into contratos (fornecedor_id, duracao, produto_quantidade, valor) values ( 4, '2 anos', '165 mensais', '20.000');
+insert into contratos (fornecedor_id, duracao, produto_quantidade, valor) values ( 5, '1 ano', '80 mensais', '19.000');
 
 insert into banco_horas (funcionario_id, horas_em_banco, ferias, licencas) values (1, 2, '46 horas debitadas de férias', 'Nenhuma');
 insert into banco_horas (funcionario_id, horas_em_banco, ferias, licencas) values (2, 16, 'Nenhuma', '29 horas debitadas por questões de saúde');
@@ -234,10 +290,10 @@ insert into folha_pagamento (funcionario_id, cargo_id, beneficios, bonus) values
 insert into folha_pagamento (funcionario_id, cargo_id, beneficios, bonus) values (8, 2, 0.300, 0.100);
 
 insert into folha_ponto (funcionario_id, horario_chegada, horario_saida) values(1, now(), DATE_SUB(NOW(), INTERVAL 8 HOUR));
-insert into folha_ponto (funcionario_id, horario_chegada, horario_saida) values(1, DATE_SUB(NOW(), INTERVAL 16 HOUR), DATE_SUB(NOW(), INTERVAL 8 HOUR));
-insert into folha_ponto (funcionario_id, horario_chegada, horario_saida) values(1, DATE_SUB(NOW(), INTERVAL 16 HOUR), DATE_SUB(NOW(), INTERVAL 8 HOUR));
-insert into folha_ponto (funcionario_id, horario_chegada, horario_saida) values(1, DATE_SUB(NOW(), INTERVAL 46 HOUR), DATE_SUB(NOW(), INTERVAL 8 HOUR));
-insert into folha_ponto (funcionario_id, horario_chegada, horario_saida) values(1, DATE_SUB(NOW(), INTERVAL 35 HOUR), DATE_SUB(NOW(), INTERVAL 8 HOUR));
-insert into folha_ponto (funcionario_id, horario_chegada, horario_saida) values(1, DATE_SUB(NOW(), INTERVAL 17 HOUR), DATE_SUB(NOW(), INTERVAL 8 HOUR));
-insert into folha_ponto (funcionario_id, horario_chegada, horario_saida) values(1, DATE_SUB(NOW(), INTERVAL 97 HOUR), DATE_SUB(NOW(), INTERVAL 8 HOUR));
-insert into folha_ponto (funcionario_id, horario_chegada, horario_saida) values(1, DATE_SUB(NOW(), INTERVAL 26 HOUR), DATE_SUB(NOW(), INTERVAL 8 HOUR));
+insert into folha_ponto (funcionario_id, horario_chegada, horario_saida) values(2, DATE_SUB(NOW(), INTERVAL 16 HOUR), DATE_SUB(NOW(), INTERVAL 8 HOUR));
+insert into folha_ponto (funcionario_id, horario_chegada, horario_saida) values(3, DATE_SUB(NOW(), INTERVAL 16 HOUR), DATE_SUB(NOW(), INTERVAL 8 HOUR));
+insert into folha_ponto (funcionario_id, horario_chegada, horario_saida) values(4, DATE_SUB(NOW(), INTERVAL 46 HOUR), DATE_SUB(NOW(), INTERVAL 8 HOUR));
+insert into folha_ponto (funcionario_id, horario_chegada, horario_saida) values(5, DATE_SUB(NOW(), INTERVAL 35 HOUR), DATE_SUB(NOW(), INTERVAL 8 HOUR));
+insert into folha_ponto (funcionario_id, horario_chegada, horario_saida) values(6, DATE_SUB(NOW(), INTERVAL 17 HOUR), DATE_SUB(NOW(), INTERVAL 8 HOUR));
+insert into folha_ponto (funcionario_id, horario_chegada, horario_saida) values(7, DATE_SUB(NOW(), INTERVAL 97 HOUR), DATE_SUB(NOW(), INTERVAL 8 HOUR));
+insert into folha_ponto (funcionario_id, horario_chegada, horario_saida) values(8, DATE_SUB(NOW(), INTERVAL 26 HOUR), DATE_SUB(NOW(), INTERVAL 8 HOUR));
