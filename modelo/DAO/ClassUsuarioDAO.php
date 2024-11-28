@@ -568,7 +568,10 @@ class ClassUsuarioDAO
     public function listaravaliacao(){
         try {
             $pdo = Conexao::getInstance();
-            $sql = "SELECT * FROM avaliacoes order by (id) desc";
+            $sql = "SELECT av.id as 'ID Avaliação', f.id as 'ID Funcionário', f.nome as Funcionário, av.produtividade as Produtividade, av.empenho as Empenho, av.relatorio as Relatório, av.recomenda_promoção as Promoção
+            FROM avaliacoes as av
+            INNER JOIN funcionarios as f on av.funcionario_id = f.id
+            ORDER BY (av.id) asc";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
             $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);

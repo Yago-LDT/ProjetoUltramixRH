@@ -45,8 +45,9 @@ if (isset($_SESSION['mensagem'])) {
 
       echo "<table>";
             echo "<tr>";
-            echo "<th>ID</th>";
+            echo "<th>ID Avaliação</th>";
             echo "<th>Funcionário ID</th>";
+            echo "<th>Funcionário</th>";
             echo "<th>Produtividade</th>";
             echo "<th>Empenho</th>";
             echo "<th>Relatório</th>";
@@ -58,12 +59,13 @@ if (isset($_SESSION['mensagem'])) {
     foreach ($us as $us) {
      
       echo "<tr>";
-      echo "<td><p>" . $us['id'] . "</p></td>";
-      echo "<td><p>" . $us['funcionario_id'] . "</p></td>";
-      echo "<td><p>" . $us['produtividade'] . "</p></td>";
-      echo "<td><p>" . $us['empenho'] . "</p></td>";
-      echo "<td><p>" . $us['relatorio'] . "</p></td>";
-      echo "<td><p>" . $us['recomenda_promoção'] . "</p></td>";
+      echo "<td><p>" . $us['ID Avaliação'] . "</p></td>";
+      echo "<td><p>" . $us['ID Funcionário'] . "</p></td>";
+      echo "<td><p>" . $us['Funcionário'] . "</p></td>";
+      echo "<td><p>" . $us['Produtividade'] . "</p></td>";
+      echo "<td><p>" . $us['Empenho'] . "</p></td>";
+      echo "<td><p>" . $us['Relatório'] . "</p></td>";
+      echo "<td><p>" . $us['Promoção'] . "</p></td>";
       echo "</tr>"; 
     
     

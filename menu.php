@@ -220,7 +220,7 @@ $classUsuarioDAO = new ClassUsuarioDAO();
         <button type="submit">Filtrar</button>
     </form>
     <br>
-    <table>
+    <table class="rolagem">
         <thead>
             <tr>
                 <th>ID</th>
@@ -249,7 +249,7 @@ $classUsuarioDAO = new ClassUsuarioDAO();
                                 <td>" . htmlspecialchars($funcionario['Cargo']) . "</td>
                                 <td>" . htmlspecialchars($funcionario['CargaHoraria']) . "</td>
                                 <td>" . htmlspecialchars($funcionario['Data de Admissão']) . "</td>
-                                <td>" . htmlspecialchars($funcionario['FaixaSalarial']) . "</td>
+                                <td>R$" . htmlspecialchars($funcionario['FaixaSalarial']) . "</td>
                             </tr>";
                         }
                     }
@@ -273,7 +273,7 @@ $classUsuarioDAO = new ClassUsuarioDAO();
                                 <td>" . htmlspecialchars($funcionario['Cargo']) . "</td>
                                 <td>" . htmlspecialchars($funcionario['CargaHoraria']) . "</td>
                                 <td>" . htmlspecialchars($funcionario['Data de Admissão']) . "</td>
-                                <td>" . htmlspecialchars($funcionario['FaixaSalarial']) . "</td>
+                                <td>R$" . htmlspecialchars($funcionario['FaixaSalarial']) . "</td>
                             </tr>";
                         }
                     }
@@ -291,7 +291,7 @@ $classUsuarioDAO = new ClassUsuarioDAO();
                             <td>" . htmlspecialchars($funcionario['Cargo']) . "</td>
                             <td>" . htmlspecialchars($funcionario['CargaHoraria']) . "</td>
                             <td>" . htmlspecialchars($funcionario['Data de Admissão']) . "</td>
-                            <td>" . htmlspecialchars($funcionario['FaixaSalarial']) . "</td>
+                            <td>R$" . htmlspecialchars($funcionario['FaixaSalarial']) . "</td>
                         </tr>";
                     }
                 }

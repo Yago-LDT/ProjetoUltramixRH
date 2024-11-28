@@ -76,7 +76,6 @@ if (isset($_SESSION['mensagem'])) {
 <div id="error-message" class="error-message"></div>
 
 <?php
-session_start();
 
 if (isset($_SESSION['mensagem'])) {
   echo "<div class='error-message'>{$_SESSION['mensagem']}</div>";

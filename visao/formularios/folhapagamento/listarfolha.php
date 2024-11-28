@@ -48,10 +48,10 @@ if (isset($_SESSION['mensagem'])) {
             echo "<th>ID</th>";
             echo "<th>Funcionario ID</th>";
             echo "<th>Cargo ID</th>";
-            echo "<th>Valor a Receber</th>";
             echo "<th>Salario Padrão</th>";
             echo "<th>Benefícios</th>";
             echo "<th>Bônus</th>";
+            echo "<th>Valor a Receber</th>";
             echo "</tr>";
     
             echo "<tbody>";
@@ -62,10 +62,10 @@ if (isset($_SESSION['mensagem'])) {
       echo "<td><p>" . $us['id'] . "</p></td>";
       echo "<td><p>" . $us['funcionario_id'] . "</p></td>";
       echo "<td><p>" . $us['cargo_id'] . "</p></td>";
-      echo "<td><p>" . $us['valor_receber'] . "</p></td>";
-      echo "<td><p>" . $us['salario_bruto'] . "</p></td>";
-      echo "<td><p>" . $us['beneficios'] . "</p></td>";
-      echo "<td><p>" . $us['bonus'] . "</p></td>";
+      echo "<td><p>R$" . $us['salario_bruto'] . "</p></td>";
+      echo "<td><p>R$" . $us['beneficios'] . "</p></td>";
+      echo "<td><p>R$" . $us['bonus'] . "</p></td>";
+      echo "<td><p>R$" . $us['valor_receber'] . "</p></td>";
       echo "</tr>"; 
 
       

@@ -241,6 +241,12 @@ aside .menu .message-count{
         background-color: #ddd;
     }
 
+.rolagem {
+    max-height: 50px; /* Define uma altura fixa para ativar a rolagem */
+    overflow-y: auto;  /* Rolagem vertical */
+    overflow-x: hidden; /* Impede rolagem horizontal */
+
+}
 
 main{
     margin-top: 1.4rem;
