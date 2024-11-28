@@ -1,3 +1,4 @@
+
 const sideMenu = document.querySelector('aside');
 const menuBtn = document.getElementById('menu-btn');
 const closeBtn = document.getElementById('close-btn');
@@ -20,7 +21,7 @@ darkMode.addEventListener('click', () => {
 
 document.getElementById('contratos').addEventListener('click', function() {
     var submenu = document.getElementById('submenu-contratos');
-    submenu.classList.toggle('show');
+    submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
 });
 
 document.getElementById('login').addEventListener('click', function() {
@@ -62,8 +63,6 @@ document.getElementById('funcionarios').addEventListener('click', function() {
     var submenu = document.getElementById('submenu-funcionarios');
     submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
 });
-
-
 
 
 
