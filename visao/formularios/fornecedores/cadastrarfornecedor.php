@@ -43,7 +43,7 @@ exit();
         </div>
         <div class="input-container">
           <label for="cnpj">CNPJ</label>
-          <input type="text" id="CNPJ" name="CNPJ" placeholder="Digite o CNPJ" required pattern="\d{13,14,15}" title="Insira um CNPJ com 13-15 dígitos numéricos">
+          <input type="text" id="CNPJ" name="CNPJ" placeholder="Digite o CNPJ" required>
         </div>
         <div class="input-container">
           <label for="telefone">Telefone</label>

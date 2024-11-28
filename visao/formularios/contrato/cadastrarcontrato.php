@@ -14,11 +14,12 @@ exit();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cadastro de Contrato</title>
   <link rel="stylesheet" href="./../../css/form.css">
+
 </head>
 <body>
 
-  <div class="form-container">
-    <div class="form-box">
+  <div class="login-container">
+    <div class="login-box">
       <div class="logo-container">
         <img src="./../../img/Logotipo_moderno_minimalista_azul_marinho_para_ecommerce-removebg-preview.png" alt="logo" class="logo">
       </div>

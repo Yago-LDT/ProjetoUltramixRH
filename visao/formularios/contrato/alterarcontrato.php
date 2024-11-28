@@ -14,11 +14,12 @@ exit();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alterar  Contrato</title>
   <link rel="stylesheet" href="./../../css/form.css">
+
 </head>
 <body>
 
-  <div class="form-container">
-    <div class="form-box">
+  <div class="login-container">
+    <div class="login-box">
       <div class="logo-container">
         <img src="./../../img/Logotipo_moderno_minimalista_azul_marinho_para_ecommerce-removebg-preview.png" alt="logo" class="logo">
       </div>
@@ -49,7 +50,7 @@ exit();
         </div>
         <div class="input-container">
           <label for="produto_quantidade">Quantidade do Produto</label>
-          <input type="number" id="produtoquantidade" name="produtoquantidade" placeholder="Digite a quantidade do produto" required min="0">
+          <input type="text" id="produtoquantidade" name="produtoquantidade" placeholder="Digite a quantidade do produto" required>
         </div>
         <div class="input-container">
           <label for="custos">Valor do Contrato</label>

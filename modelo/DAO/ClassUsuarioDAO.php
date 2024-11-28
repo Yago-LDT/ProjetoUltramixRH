@@ -245,7 +245,7 @@ class ClassUsuarioDAO
             $stmt->bindValue(':id', $idcargo->getExcluirid());
             $stmt->execute();
             return TRUE;
-        } catch (PDOException $exc) {
+        } catch (PDOException $ex) {
              echo $ex->getMessage();
         }
     }

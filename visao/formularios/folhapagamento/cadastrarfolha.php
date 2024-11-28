@@ -43,20 +43,12 @@ exit();
           <input type="text" id="cargoid" name="cargoid" placeholder="Digite o ID do cargo" required>
         </div>
         <div class="input-container">
-          <label for="salariobruto">Salário Bruto</label>
-          <input type="number" id="salariobruto" name="salariobruto" placeholder="Digite o salário bruto" required min="0" step="0.01">
-        </div>
-        <div class="input-container">
           <label for="beneficios">Benefícios</label>
           <input type="number" id="beneficios" name="beneficios" placeholder="Digite o valor dos benefícios" required min="0" step="0.01">
         </div>
         <div class="input-container">
           <label for="bonus">Bônus</label>
           <input type="number" id="bonus" name="bonus" placeholder="Digite o valor do bônus" required min="0" step="0.01">
-        </div>
-        <div class="input-container">
-          <label for="valorreceber">Valor a Receber</label>
-          <input type="number" id="valorreceber" name="valorreceber" placeholder="Digite o valor total a receber" required min="0" step="0.01">
         </div>
         <button type="submit" class="btn-submit">Cadastrar Folha de Pagamento</button>
         <br><br>

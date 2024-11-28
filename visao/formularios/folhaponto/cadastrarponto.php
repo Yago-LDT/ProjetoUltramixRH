@@ -39,11 +39,11 @@ exit();
         </div>
         <div class="input-container">
           <label for="horariochegada">Horário de Chegada</label>
-          <input type="time" id="horariochegada" name="horariochegada" required>
+          <input type="datetime-local" id="horariochegada" name="horariochegada" required>
         </div>
         <div class="input-container">
           <label for="horariosaida">Horário de Saída</label>
-          <input type="time" id="horariosaida" name="horariosaida" required>
+          <input type="datetime-local" id="horariosaida" name="horariosaida" required>
         </div>
         <button type="submit" class="btn-submit">Cadastrar Folha de Ponto</button>
         <br><br>

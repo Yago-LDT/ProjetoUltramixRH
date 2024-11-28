@@ -42,21 +42,10 @@ $classUsuarioDAO = new ClassUsuarioDAO();
 
             <div class="menu">
 
-
                 <a href="#" class="active">
                     <h4>Painel Geral</h4>
                 </a>
-                <a href="#" id="contratos">
-                    <h4>Contratos</h4>
-                </a>
-                <div class="submenu" id="submenu-contratos">
-                    <a href="visao/formularios/contrato/cadastrarcontrato.php">Cadastrar Contrato</a>
-                    <a href="visao/formularios/contrato/listarcontrato.php">Listar Contrato</a>
-                    <a href="visao/formularios/contrato/alterarcontrato.php">Alterar Contrato</a>
-                    <a href="visao/formularios/contrato/excluircontrato.php">Excluir Contrato</a>
-                   
 
-                </div>
                 <a href="#" id="login">
                     <h4>Login</h4>
                 </a>
@@ -65,6 +54,62 @@ $classUsuarioDAO = new ClassUsuarioDAO();
                     <a href="visao/formularios/login/listarlogin.php">Listar Login</a>
                     <a href="visao/formularios/login/excluirlogin.php">Excluir Login</a>
                     <a href="visao/formularios/login/alterarlogin.php">Alterar Login</a>
+                    <br>
+                </div>
+
+                <a href="#" id="funcionarios">
+                    <h4>Funcionários</h4>
+                </a>
+                <div class="submenu" id="submenu-funcionarios">
+                    <a href="visao/formularios/funcionarios/cadastrarfuncionario.php">Cadastrar Funcionário</a>
+                    <a href="visao/formularios/funcionarios/alterarfuncionario.php">Alterar Funcionário</a>
+                    <a href="visao/formularios/funcionarios/excluirfuncionario.php">Excluir Funcionário</a>
+                    <a href="visao/formularios/funcionarios/listarfuncionario.php">Listar Funcionário</a>
+                    <br>
+                </div>
+
+                <a href="#" id="cargo">
+                    <h4>Cargos</h4>
+                </a>
+                <div class="submenu" id="submenu-cargo">
+                    <a href="visao/formularios/cargos/cadastrarcargo.php">Cadastrar cargo</a>
+                    <a href="visao/formularios/cargos/alterarcargo.php">Alterar cargo</a>
+                    <a href="visao/formularios/cargos/excluircargo.php">Excluir cargo</a>
+                    <a href="visao/formularios/cargos/listarcargo.php">Listar cargo</a>
+                    <br>
+                </div>
+
+                <a href="#" id="avaliacao">
+                    <h4>Avaliações</h4>
+                </a>
+                <div class="submenu" id="submenu-avaliacao">
+                    <a href="visao/formularios/avaliacao/cadastraravaliacao.php">Cadastrar avaliação</a>
+                    <a href="visao/formularios/avaliacao/excluiravaliacao.php">Excluir avaliação</a>
+                    <a href="visao/formularios/avaliacao/alteraravaliacao.php">Alterar avaliação</a>
+                    <a href="visao/formularios/avaliacao/listaravaliacao.php">Listar avaliação</a>
+                    <br>
+                </div>
+
+                <a href="#" id="fornecedores">
+                    <h4>Fornecedores</h4>
+                </a>
+                <div class="submenu" id="submenu-fornecedores">
+                    <a href="visao/formularios/fornecedores/cadastrarfornecedor.php">Cadastrar Fornecedor</a>
+                    <a href="visao/formularios/fornecedores/alterarfornecedor.php">Alterar Fornecedor</a>
+                    <a href="visao/formularios/fornecedores/excluirfornecedor.php">Excluir Fornecedor</a>
+                    <a href="visao/formularios/fornecedores/listarfornecedor.php">Listar Fornecedor</a>
+                    <br>
+                </div>
+
+                <a href="#" id="contratos">
+                    <h4>Contratos</h4>
+                </a>
+                <div class="submenu" id="submenu-contratos">
+                    <a href="visao/formularios/contrato/cadastrarcontrato.php">Cadastrar Contrato</a>
+                    <a href="visao/formularios/contrato/listarcontrato.php">Listar Contrato</a>
+                    <a href="visao/formularios/contrato/alterarcontrato.php">Alterar Contrato</a>
+                    <a href="visao/formularios/contrato/excluircontrato.php">Excluir Contrato</a>
+                   <br>
 
                 </div>
 
@@ -76,29 +121,7 @@ $classUsuarioDAO = new ClassUsuarioDAO();
                     <a href="visao/formularios/bancodehoras/cadastrarbancohoras.php">Cadastrar Banco</a>
                     <a href="visao/formularios/bancodehoras/excluirbancohoras.php">Excluir Banco</a>
                     <a href="visao/formularios/bancodehoras/listarbancohoras.php">Listar Banco de Horas</a>
-
-                </div>
-
-                <a href="#" id="avaliacao">
-                    <h4>Avaliações</h4>
-                </a>
-                <div class="submenu" id="submenu-avaliacao">
-                    <a href="visao/formularios/avaliacao/cadastraravaliacao.php">Cadastrar avaliação</a>
-                    <a href="visao/formularios/avaliacao/excluiravaliacao.php">Excluir avaliação</a>
-                    <a href="visao/formularios/avaliacao/alteraravaliacao.php">Alterar avaliação</a>
-                    <a href="visao/formularios/avaliacao/listaravaliacao.php">Listar avaliação</a>
-
-                </div>
-
-                <a href="#" id="cargo">
-                    <h4>Cargos</h4>
-                </a>
-                <div class="submenu" id="submenu-cargo">
-                    <a href="visao/formularios/cargos/cadastrarcargo.php">Cadastrar cargo</a>
-                    <a href="visao/formularios/cargos/alterarcargo.php">Alterar cargo</a>
-                    <a href="visao/formularios/cargos/excluircargo.php">Excluir cargo</a>
-                    <a href="visao/formularios/cargos/listarcargo.php">Listar cargo</a>
-
+                    <br>
                 </div>
 
                 <a href="#" id="folha-de-pagamento">
@@ -109,9 +132,8 @@ $classUsuarioDAO = new ClassUsuarioDAO();
                     <a href="visao/formularios/folhapagamento/alterarfolha.php">Alterar Folha</a>
                     <a href="visao/formularios/folhapagamento/excluirfolha.php">Excluir Folha</a>
                     <a href="visao/formularios/folhapagamento/listarfolha.php">Listar Folha</a>
-
+                    <br>
                 </div>
-                
 
                 <a href="#" id="folha-de-ponto">
                     <h4>Folha de Ponto</h4>
@@ -121,30 +143,9 @@ $classUsuarioDAO = new ClassUsuarioDAO();
                     <a href="visao/formularios/folhaponto/alterarponto.php">Alterar Ponto</a>
                     <a href="visao/formularios/folhaponto/excluirponto.php">Excluir Ponto</a>
                     <a href="visao/formularios/folhaponto/listarponto.php">Listar Ponto</a>
-
+                    <br>
                 </div>
 
-                <a href="#" id="fornecedores">
-                    <h4>Fornecedores</h4>
-                </a>
-                <div class="submenu" id="submenu-fornecedores">
-                    <a href="visao/formularios/fornecedores/cadastrarfornecedor.php">Cadastrar Fornecedor</a>
-                    <a href="visao/formularios/fornecedores/alterarfornecedor.php">Alterar Fornecedor</a>
-                    <a href="visao/formularios/fornecedores/excluirfornecedor.php">Excluir Fornecedor</a>
-                    <a href="visao/formularios/fornecedores/listarfornecedor.php">Listar Fornecedor</a>
-
-                </div>
-
-                <a href="#" id="funcionarios">
-                    <h4>Funcionários</h4>
-                </a>
-                <div class="submenu" id="submenu-funcionarios">
-                    <a href="visao/formularios/funcionarios/cadastrarfuncionario.php">Cadastrar Funcionário</a>
-                    <a href="visao/formularios/funcionarios/alterarfuncionario.php">Alterar Funcionário</a>
-                    <a href="visao/formularios/funcionarios/excluirfuncionario.php">Excluir Funcionário</a>
-                    <a href="visao/formularios/funcionarios/listarfuncionario.php">Listar Funcionário</a>
-
-                </div>
             </div>
         </aside>
         <!-- End of Sidebar Section -->
@@ -350,27 +351,10 @@ $classUsuarioDAO = new ClassUsuarioDAO();
 
             <div class="reminders">
                 <div class="header">
-                    <h2>Lembretes</h2>
-                    <span class="material-icons-sharp">
-                        notifications_none
-                    </span>
+                    <h2>Frase do dia:</h2>
                 </div>
 
-                <div class="notification">
-                    <div class="icon">
-                        <span class="material-icons-sharp">
-                            volume_up
-                        </span>
-                    </div>
-                    <div class="content">
-                        <div class="info">
-                            <h3>Conferir Banco de Horas</h3>
-                        </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
+                
 
                 <div class="notification deactive">
                     <div class="icon">
@@ -380,11 +364,9 @@ $classUsuarioDAO = new ClassUsuarioDAO();
                     </div>
                     <div class="content">
                         <div class="info">
-                            <h3>Atualização de Contratos</h3>
+                            <h2>"O único lugar onde o sucesso vem antes do trabalho é o dicionário"</h2>
                         </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
+                        
                     </div>
                 </div>
 

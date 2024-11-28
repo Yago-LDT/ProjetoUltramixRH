@@ -61,7 +61,7 @@ if (isset($_SESSION['mensagem'])) {
       echo "<td><p>" . $us['fornecedor_id'] . "</p></td>";
       echo "<td><p>" . $us['duracao'] . "</p></td>";
       echo "<td><p>" . $us['produto_quantidade'] . "</p></td>";
-      echo "<td><p>" . $us['valor'] . "</p></td>";
+      echo "<td><p>R$" . $us['valor'] . "</p></td>";
       echo "</tr>"; 
       
     }

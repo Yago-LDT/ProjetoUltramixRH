@@ -24,7 +24,7 @@ exit();
       </div>
       <h1>Excluir Ponto</h1>
 
-
+<?php
   if (isset($_SESSION['mensagem'])) {
     echo "<div class='error-message'>{$_SESSION['mensagem']}</div>";
     unset($_SESSION['mensagem']);

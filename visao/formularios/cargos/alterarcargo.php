@@ -37,6 +37,7 @@ exit();
           <label for="novoid">ID</label>
           <input type="text" id="novoid" name="novoid" placeholder="Digite o ID do cargo para alterar" required>
         </div>
+        <div class="input-container">
           <label for="titulo">Título do Cargo</label>
           <input type="text" id="titulo" name="titulo" placeholder="Digite o título do cargo" required>
         </div>

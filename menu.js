@@ -19,6 +19,10 @@ darkMode.addEventListener('click', () => {
     darkMode.querySelector('span:nth-child(2)').classList.toggle('active');
 })
 
+Orders.forEach(order => {
+
+});
+
 document.getElementById('contratos').addEventListener('click', function() {
     var submenu = document.getElementById('submenu-contratos');
     submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';

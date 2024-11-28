@@ -471,7 +471,7 @@ switch($acao) {
                     
             if($resultado >= 1) {
             $_SESSION['mensagem'] = "Cadastro realizado com sucesso!";
-            header('Location: ../visao/formularios/folhapagamento/cadastrarfolha.php');
+            header('Location: ../visao/formularios/folhapagamento/listarfolha.php');
             exit();
                 } else{
                     $_SESSION['mensagem'] = "Erro ao realizar o cadastro!";

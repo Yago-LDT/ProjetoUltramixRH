@@ -51,7 +51,7 @@ exit();
 
         <div class="input-container">
           <label for="CNPJ">CNPJ</label>
-          <input type="text" id="CNPJ" name="CNPJ" placeholder="Digite o CNPJ" required pattern="\d{14,15}" title="Insira um CNPJ com 14-15 dígitos numéricos">
+          <input type="text" id="CNPJ" name="CNPJ" placeholder="Digite o CNPJ" required>
         </div>
 
         <div class="input-container">
@@ -80,7 +80,7 @@ exit();
       </form>
       <div id="error-message" class="error-message"></div>
       <?php
-  session_start();
+
 
   if (isset($_SESSION['mensagem'])) {
     echo "<div class='error-message'>{$_SESSION['mensagem']}</div>";

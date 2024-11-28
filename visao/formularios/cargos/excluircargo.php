@@ -42,7 +42,7 @@ exit();
         <button type="button" class="btn-submit" onclick="window.location.href='../../../menu.php'">Voltar</button>
       </form>
       <div id="error-message" class="error-message"></div>
-      ?>
+      
     </div>
   </div>
   <script src=""></script>
