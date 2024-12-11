@@ -353,9 +353,6 @@ $classUsuarioDAO = new ClassUsuarioDAO();
                 <div class="header">
                     <h2>Frase do dia:</h2>
                 </div>
-
-                
-
                 <div class="notification deactive">
                     <div class="icon">
                         <span class="material-icons-sharp">
