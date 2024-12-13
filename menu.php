@@ -146,6 +146,11 @@ $classUsuarioDAO = new ClassUsuarioDAO();
                     <br>
                 </div>
 
+                <a href="visao\formularios\login\logout.php" id="logout">
+                    <h4>Logout</h4>
+                </a>
+                
+
             </div>
         </aside>
         <!-- End of Sidebar Section -->
