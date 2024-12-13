@@ -146,9 +146,12 @@ $classUsuarioDAO = new ClassUsuarioDAO();
                     <br>
                 </div>
 
-                <a href="visao\formularios\login\logout.php" id="logout">
+                <a href="visao\formularios\login\logout.php" id="folha-de-ponto">
                     <h4>Logout</h4>
+                    <br>
                 </a>
+                <div class="submenu" id="submenu-logout">
+                </div>
                 
 
             </div>
